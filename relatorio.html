@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../projeto-ocorrencias/bootstrap4/css/bootstrap.min.css">
+    <title>Relatório</title>
+</head>
+<body>
+        <div id="principal">
+                <div class="header">
+                    <div class="container">
+                        <div class="text-center">
+                            <h1 class="text-center text-danger">Cadastro de Ocorrências</h1>
+                            <br>
+                            <ul class="nav nav-tabs btn-group" data-toggle="buttons">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary"
+                                            data-toggle="modal" data-target=".talao-modal">Talão<br><img
+                                                src="_imagens/add.png"></button></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../projeto-ocorrencias/relatorio.html"><button type="button"
+                                            class="btn btn-outline-secondary">Relatório<br><img
+                                                src="_imagens/search.png"></button></a></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><button type="button"
+                                            class="btn btn-outline-success">CRM<br><img src="_imagens/medical.png"
+                                                alt=""></button></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><button type="button"
+                                            class="btn btn-outline-danger">Efetivo<br><img src="_imagens/efetivo.png"
+                                                alt=""></button></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><button type="button"
+                                            class="btn btn-outline-info">Viaturas<br><img src="_imagens/viatura.png"
+                                                alt=""></button></a>
+                                </li>
+                            </ul>
+
+
+
+
+    <!-- JavaScritp -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../projeto-ocorrencias/bootstrap4/js/bootstrap.min.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+
+    <!-- Fim JavaScritp -->
+</body>
+</html>
