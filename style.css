@@ -10042,7 +10042,6 @@ a.text-dark:hover, a.text-dark:focus {
 
 #cabecalho{
   border-bottom: 2px solid red;
-  margin-top: -40px;
   background-color: rgb(190, 190, 190);
 }
 
@@ -10061,13 +10060,12 @@ a.text-dark:hover, a.text-dark:focus {
   margin-left: 40px;
 }
 
-#logo{
-  margin-top: 50px;
-  width: 250px;
-}
-
 .clear{
   clear: both;
+}
+
+.header-inline{
+  display: inline;
 }
 
 
