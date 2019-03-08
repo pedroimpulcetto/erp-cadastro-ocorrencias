@@ -44,42 +44,61 @@
             <div class="text-center">
                 <br>
                 <ul class="nav nav-tabs">
-                    <li class="nav-item btn-group" data-toggle="buttons">
-                        <a class="nav-link active" href="../projeto-ocorrencias/erp-co.html"><button type="button"
-                                class="btn btn-outline-dark">Principal<br><img
-                                    src="_imagens/principal.png"></button></a>
-                    <li class="nav-item btn-group" data-toggle="buttons">
-                        <a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary"
-                                data-toggle="modal" data-target=".talao-modal">Talão<br><img
-                                    src="_imagens/add.png"></button></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../projeto-ocorrencias/relatorio.html"><button type="button"
-                                class="btn btn-outline-secondary">Relatório<br><img
-                                    src="_imagens/search.png"></button></a></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../projeto-ocorrencias/crm.html"><button type="button"
-                                class="btn btn-outline-success">CRM<br><img src="_imagens/medical.png"
-                                    alt=""></button></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../projeto-ocorrencias/efetivo.html"><button type="button"
-                                class="btn btn-outline-danger">Efetivo<br><img src="_imagens/efetivo.png"
-                                    alt=""></button></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../projeto-ocorrencias/viatura.html"><button type="button"
-                                class="btn btn-outline-info">Viaturas<br><img src="_imagens/viatura.png"
-                                    alt=""></button></a>
-                    </li>
+                        <a class="nav-link active" href="index.html">
+                            <button type="button" class="btn btn-outline-dark">Principal
+                                <br>
+                                <img src="_imagens/principal.png">
+                            </button>
+                        </a>
+                        <li class="nav-item btn-group" data-toggle="buttons">
+                            <a class="nav-link" href="#">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".talao-modal">Talão
+                                    <br>
+                                    <img src="_imagens/add.png">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="relatorio.html">
+                                <button type="button" class="btn btn-outline-secondary">Relatório
+                                    <br>
+                                    <img src="_imagens/search.png">
+                                </button>
+                            </a>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="crm.html">
+                                <button type="button" class="btn btn-outline-success">CRM
+                                    <br>
+                                    <img src="_imagens/medical.png" alt="">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="efetivo.html">
+                                <button type="button" class="btn btn-outline-danger">Efetivo
+                                    <br>
+                                    <img src="_imagens/efetivo.png" alt="">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viatura.html">
+                                <button type="button" class="btn btn-outline-info">Viaturas
+                                    <br>
+                                    <img src="_imagens/viatura.png" alt="">
+                                </button>
+                            </a>
+                        </li>
                 </ul>
             </div>
         </div>
 
         <div class="body container">
             <br>
-            <table class="table">
+            <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -105,6 +124,7 @@
                         <td>64001</td>
                         <td>64002</td>
                     </tr>
+                    </a>
                     <tr>
                         <th scope="row">2</th>
                         <th></th>
@@ -148,8 +168,7 @@
 
     <!-- Talao Modal -->
 
-    <div class="modal fade talao-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
+    <div class="modal fade talao-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,18 +204,15 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="inputEndereco">Endereço</label>
-                                <input type="text" class="form-control" id="inputEndereco"
-                                    placeholder="RUA JOSÉ LOPES SILVA">
+                                <input type="text" class="form-control" id="inputEndereco" placeholder="RUA JOSÉ LOPES SILVA">
                             </div>
                             <div class="form-group col-md-1">
                                 <label for="inputNum">Nº</label>
-                                <input type="number" class="form-control" id="inputNum"
-                                    placeholder="1234">
+                                <input type="number" class="form-control" id="inputNum" placeholder="1234">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputBairro">Bairro</label>
-                                <input type="text" class="form-control" id="inputBairro"
-                                    placeholder="1234">
+                                <input type="text" class="form-control" id="inputBairro" placeholder="1234">
                             </div>
                         </div>
                         <div class="form-row">
@@ -206,8 +222,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
-                                <input type="text" class="form-control" id="inputTipoOcorrencia"
-                                    placeholder="CARRO X MOTO">
+                                <input type="text" class="form-control" id="inputTipoOcorrencia" placeholder="CARRO X MOTO">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputCod">Cód Ocorrência</label>
@@ -223,7 +238,7 @@
                                 <label for="inputHS">Hora Saída</label>
                                 <input type="time" class="form-control" id="inputHS">
                             </div>
-                            <div class="form-group col-md-1.5">
+                            <div class="form-group col-md-1.5"> 
                                 <label for="inputOS">Odo. Saída</label>
                                 <input type="number" class="form-control" id="inputOS">
                             </div>

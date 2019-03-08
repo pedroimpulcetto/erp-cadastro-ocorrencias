@@ -1,61 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../projeto-ocorrencias/bootstrap4/css/bootstrap.min.css">
-    <title>CRM</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Ocorrências</title>
 </head>
+
 <body>
-        <div id="principal">
-                <div class="header">
-                    <div class="container">
-                        <div class="text-center">
-                            <h1 class="text-center text-danger">Cadastro de Ocorrências</h1>
-                            <br>
-                            <ul class="nav nav-tabs btn-group" data-toggle="buttons">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary"
-                                            data-toggle="modal" data-target=".talao-modal">Talão<br><img
-                                                src="_imagens/add.png"></button></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../projeto-ocorrencias/relatorio.html"><button type="button"
-                                            class="btn btn-outline-secondary">Relatório<br><img
-                                                src="_imagens/search.png"></button></a></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#"><button type="button"
-                                            class="btn btn-outline-success">CRM<br><img src="_imagens/medical.png"
-                                                alt=""></button></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><button type="button"
-                                            class="btn btn-outline-danger">Efetivo<br><img src="_imagens/efetivo.png"
-                                                alt=""></button></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><button type="button"
-                                            class="btn btn-outline-info">Viaturas<br><img src="_imagens/viatura.png"
-                                                alt=""></button></a>
-                                </li>
-                            </ul>
 
 
 
+    <!-- CABECALHO -->
+
+    <div id="cabecalho" class="text-center">
+        <img id="logo" class="header-inline" src="_imagens/policia.png" alt="">
+        <h1 class="text-danger header-inline">Cadastro de Ocorrências</h1>
+    </div>
 
 
-    <!-- JavaScritp -->
+    <!-- FIM CABECALHO -->
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="../projeto-ocorrencias/bootstrap4/js/bootstrap.min.js"></script>
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-        })
-    </script>
+    <!-- SideBar -->
 
-    <!-- Fim JavaScritp -->
+    <aside id="sidebar" class="clear">
+
+        <h1>barra lateral</h1>
+        <div class="btn-group-vertical ">
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+        </div>
+    </aside>
+
+    <!-- Fim SideBar -->
+
+    <!-- PRINCIPAL -->
+    <div id="principal">
+
+        <div class="container">
+            <div class="text-center">
+                <br>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <button type="button" class="btn btn-outline-dark">Principal
+                                <br>
+                                <img src="_imagens/principal.png">
+                            </button>
+                        </a>
+                        <li class="nav-item" data-toggle="buttons">
+                            <a class="nav-link" href="#">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".talao-modal">Talão
+                                    <br>
+                                    <img src="_imagens/add.png">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="relatorio.html">
+                                <button type="button" class="btn btn-outline-secondary">Relatório
+                                    <br>
+                                    <img src="_imagens/search.png">
+                                </button>
+                            </a>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="crm.html">
+                                <button type="button" class="btn btn-outline-success">CRM
+                                    <br>
+                                    <img src="_imagens/medical.png" alt="">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="efetivo.html">
+                                <button type="button" class="btn btn-outline-danger">Efetivo
+                                    <br>
+                                    <img src="_imagens/efetivo.png" alt="">
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viatura.html">
+                                <button type="button" class="btn btn-outline-info">Viaturas
+                                    <br>
+                                    <img src="_imagens/viatura.png" alt="">
+                                </button>
+                            </a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- RODAPE -->
+
+        <footer class="clear text-center">
+            <h4>Todos os direitos reservados.</h4>
+        </footer>
+
+        <!-- FIM RODAPE -->
+
+        <!-- Modal -->
+
+        <!-- Talao Modal -->
+
+        <div class="modal fade talao-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="exampleModalLabel">Cadastrar Novo Talão</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="inputNumTalao">Nº Talão</label>
+                                    <input type="number" class="form-control" id="inputNumTalao" placeholder="1234">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputData">Data</label>
+                                    <input type="date" class="form-control" id="inputData" placeholder="22FEV19">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputHoraChamada">Hora Chamada</label>
+                                    <input type="time" class="form-control" id="inputHoraChamada" placeholder="07:30">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputSolicitante">Solicitante</label>
+                                    <input type="text" class="form-control" id="inputSolicitante" placeholder="PEDRO">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputTel">Telefone</label>
+                                    <input type="tel" class="form-control" id="inputTel" placeholder="9-9830-5135">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="inputEndereco">Endereço</label>
+                                    <input type="text" class="form-control" id="inputEndereco" placeholder="RUA JOSÉ LOPES SILVA">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label for="inputNum">Nº</label>
+                                    <input type="number" class="form-control" id="inputNum" placeholder="1234">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputBairro">Bairro</label>
+                                    <input type="text" class="form-control" id="inputBairro" placeholder="1234">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="inputCity">Atendente</label>
+                                    <input type="text" class="form-control" id="inputAtendente" placeholder="CB FAVERI">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
+                                    <input type="text" class="form-control" id="inputTipoOcorrencia" placeholder="CARRO X MOTO">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputCod">Cód Ocorrência</label>
+                                    <input type="text" class="form-control" id="inputCod" placeholder="L08">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputVtr">Viatura</label>
+                                    <input type="text" class="form-control" id="inputVtr" placeholder="UR16215">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputHS">Hora Saída</label>
+                                    <input type="time" class="form-control" id="inputHS">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputOS">Odo. Saída</label>
+                                    <input type="number" class="form-control" id="inputOS">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputHL">Hora Local</label>
+                                    <input type="time" class="form-control" id="inputHL">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputOL">Odo. Local</label>
+                                    <input type="number" class="form-control" id="inputOL">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputSO">Saída Ocor.</label>
+                                    <input type="time" class="form-control" id="inputSO">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputPS">Chegada PS</label>
+                                    <input type="time" class="form-control" id="inputPS">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputSPS">Saída PS</label>
+                                    <input type="time" class="form-control" id="inputSPS">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputHPB">Hora PB</label>
+                                    <input type="time" class="form-control" id="inputHPB">
+                                </div>
+                                <div class="form-group col-md-1.5">
+                                    <label for="inputOPB">Odo. PB</label>
+                                    <input type="number" class="form-control" id="inputOPB">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label for="inputNumVitimas">Nº Vit.</label>
+                                    <input type="number" class="form-control" id="inputNumVitimas">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputQruOcor">QRU Ocorrência</label>
+                                    <input type="text" class="form-control" id="inputQruOcor">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputMotorista">Motorista</label>
+                                    <input type="text" class="form-control" id="inputMotorista">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputComandante">Comandante</label>
+                                    <input type="text" class="form-control" id="inputComandante">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Salvar Talão</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim Modal -->
+
+        <!-- JavaScritp -->
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="../erp-cadastro-ocorrencias/bootstrap4/js/bootstrap.min.js"></script>
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+
+        <!-- Fim JavaScritp -->
+
+
 </body>
+
 </html>
