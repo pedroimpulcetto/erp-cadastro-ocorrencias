@@ -31,7 +31,7 @@
         </div>
         <div id="body-sidebar" class="text-center card-body">
             <div class="btn-group-vertical">
-                <button type="button" class="btn btn-outline-primary">Adicionar<br><img src="_imagens/add.png" alt="">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCRM">Adicionar<br><img src="_imagens/add.png" alt="">
                 </button>
                 <br>
                 <button type="button" class="btn btn-outline-secondary">Excluir<br><img src="_imagens/delete.png"
@@ -267,6 +267,41 @@
             </div>
         </div>
     </div>
+
+
+    <!-- MODAL CRM -->
+
+    <div class="modal fade" id="modalCRM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Adicionar Médico</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="inputNomeMedico">Nome</label>
+                            <input type="text" class="form-control" id="inputNomeMedico" placeholder="DR. ALLAN">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCRM">CRM</label>
+                            <input type="number" class="form-control" id="inputCRM" placeholder="138547">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIM MODAL CRM -->
 
     <!-- Fim Modal -->
 

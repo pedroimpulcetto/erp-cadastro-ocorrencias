@@ -278,17 +278,46 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Adicionar Militar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form action="">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="inputRE">RE</label>
+                                <input type="number" class="form-control" id="inputRE">
+                            </div>
+                            <div class="form-group col-md-10">
+                                <label for="inputNomeCompleto">Nome Completo</label>
+                                <input type="text" class="form-control" id="inputNomeCompleto">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputFone">Telefone</label>
+                                <input type="tel" class="form-control" id="inputFone">
+                            </div>
+                            <div class="form-group col-md-2">
+                                    <label for="inputCel">Celular</label>
+                                    <input type="tel" class="form-control" id="inputCel">
+                                </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputDN">Data de Nascimento</label>
+                                <input type="date" class="form-control" id="inputDN">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                            <label for="inputEmil">Email</label>
+                            <input type="email" class="form-control" id="inputEmail">
+                        </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>
