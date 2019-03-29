@@ -1,3 +1,15 @@
+<?php 
+
+    require "config.php";
+
+    $consulta = $pdo->prepare("
+        select * from talao
+        order by id_talao
+    ");
+    $consulta->execute();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +45,7 @@
                 <br>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link active" href="index.php">
                             <button type="button" class="btn btn-outline-dark">Principal
                                 <br>
                                 <img src="_imagens/principal.png">
@@ -49,7 +61,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="relatorio.html">
+                        <a class="nav-link" href="relatorio.php">
                             <button type="button" class="btn btn-outline-secondary">Relatório
                                 <br>
                                 <img src="_imagens/search.png">
@@ -58,7 +70,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crm.html">
+                        <a class="nav-link" href="crm.php">
                             <button type="button" class="btn btn-outline-success">CRM
                                 <br>
                                 <img src="_imagens/medical.png" alt="">
@@ -66,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="efetivo.html">
+                        <a class="nav-link" href="efetivo.php">
                             <button type="button" class="btn btn-outline-danger">Efetivo
                                 <br>
                                 <img src="_imagens/efetivo.png" alt="">
@@ -74,7 +86,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viatura.html">
+                        <a class="nav-link" href="viatura.php">
                             <button type="button" class="btn btn-outline-info">Viaturas
                                 <br>
                                 <img src="_imagens/viatura.png" alt="">
@@ -102,39 +114,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <th></th>
-                        <td>3242</td>
-                        <td>Rua José Lopes Silva, 340 Jd Lemense</td>
-                        <td>Carro X Moto</td>
-                        <td>UR16213</td>
-                        <td>64000</td>
-                        <td>64001</td>
-                        <td>64002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <th></th>
-                        <td>4322</td>
-                        <td>Av. Paul Harris, 1330 Jd do Bosque</td>
-                        <td>Incêndio em Residencia</td>
-                        <td>AB16201</td>
-                        <td>22000</td>
-                        <td>22001</td>
-                        <td>22002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <th></th>
-                        <td>1234</td>
-                        <td>Av. 29 de Agosto 432 Centro</td>
-                        <td>Mal Súbito</td>
-                        <td>UR16213</td>
-                        <td>64005</td>
-                        <td>64006</td>
-                        <td>64007</td>
-                    </tr>
+                    <?php
+
+                        while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                            # code...
+                            echo "
+                                <tr>
+                                    <th scope='row'>$row[id_talao]</th>
+                                    <td>$row[inputData]</td>
+                                    <td>$row[inputNumTalao]</td>
+                                    <td>$row[inputEndereco], $row[inputNum] - $row[inputBairro]</td>
+                                    <td>$row[inputTipoOcorrencia]</td>
+                                    <td>$row[inputPrefixo]</td>
+                                    <td>$row[inputOS]</td>
+                                    <td>$row[inputOL]</td>
+                                    <td>$row[inputOPB]</td>
+                                </tr>
+                            ";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

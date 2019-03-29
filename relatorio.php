@@ -1,3 +1,15 @@
+<?php 
+
+    require "config.php";
+
+    $consulta = $pdo->prepare("
+        select * from crm
+        order by inputNomeMedico
+    ");
+    $consulta->execute();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,30 +28,48 @@
     <!-- CABECALHO -->
 
     <div id="cabecalho" class="text-center">
-        <div class="container">
-            <img id="logo" class="header-inline" src="_imagens/policia.png" alt="">
-            <h1 class="text-danger header-inline">Cadastro de Ocorrências</h1>
-        </div>
+        <img id="logo" class="header-inline" src="_imagens/policia.png" alt="">
+        <h1 class="text-danger header-inline">Cadastro de Ocorrências</h1>
     </div>
 
 
     <!-- FIM CABECALHO -->
 
+    <!-- SideBar -->
+
+    <aside id="sidebar" class="clear text-center">
+        <div id="header-sidebar">
+            <h1 class="card-title">Relatório</h1>
+        </div>
+        <div id="body-sidebar" class="text-center card-body">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-outline-primary">Imprimir<br><img src="_imagens/print.png" alt="">
+                </button>
+                <br>
+                <button type="button" class="btn btn-outline-secondary">Salvar<br><img src="_imagens/save.png"></button>
+                <br>
+                <button type="button" class="btn btn-outline-success">Success</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Fim SideBar -->
 
     <!-- PRINCIPAL -->
-    <div id="principal-index" class="container">
+
+    <div id="principal">
         <div class="container">
             <div class="text-center">
                 <br>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <button type="button" class="btn btn-outline-dark">Principal
                                 <br>
                                 <img src="_imagens/principal.png">
                             </button>
                         </a>
-                    <li class="nav-item btn-group" data-toggle="buttons">
+                    <li class="nav-item" data-toggle="buttons">
                         <a class="nav-link" href="#">
                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                 data-target=".talao-modal">Talão
@@ -49,7 +79,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="relatorio.html">
+                        <a class="nav-link active" href="relatorio.php">
                             <button type="button" class="btn btn-outline-secondary">Relatório
                                 <br>
                                 <img src="_imagens/search.png">
@@ -58,7 +88,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crm.html">
+                        <a class="nav-link" href="crm.php">
                             <button type="button" class="btn btn-outline-success">CRM
                                 <br>
                                 <img src="_imagens/medical.png" alt="">
@@ -66,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="efetivo.html">
+                        <a class="nav-link" href="efetivo.php">
                             <button type="button" class="btn btn-outline-danger">Efetivo
                                 <br>
                                 <img src="_imagens/efetivo.png" alt="">
@@ -74,7 +104,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viatura.html">
+                        <a class="nav-link" href="viatura.php">
                             <button type="button" class="btn btn-outline-info">Viaturas
                                 <br>
                                 <img src="_imagens/viatura.png" alt="">
@@ -84,63 +114,85 @@
                 </ul>
             </div>
         </div>
-
-        <div id="corpo-index" class="body container card">
-            <br>
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Talão</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Tipo de Ocor.</th>
-                        <th scope="col">Viatura</th>
-                        <th scope="col">Odo. Saída</th>
-                        <th scope="col">Odo. Local</th>
-                        <th scope="col">Odo. Final</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <th></th>
-                        <td>3242</td>
-                        <td>Rua José Lopes Silva, 340 Jd Lemense</td>
-                        <td>Carro X Moto</td>
-                        <td>UR16213</td>
-                        <td>64000</td>
-                        <td>64001</td>
-                        <td>64002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <th></th>
-                        <td>4322</td>
-                        <td>Av. Paul Harris, 1330 Jd do Bosque</td>
-                        <td>Incêndio em Residencia</td>
-                        <td>AB16201</td>
-                        <td>22000</td>
-                        <td>22001</td>
-                        <td>22002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <th></th>
-                        <td>1234</td>
-                        <td>Av. 29 de Agosto 432 Centro</td>
-                        <td>Mal Súbito</td>
-                        <td>UR16213</td>
-                        <td>64005</td>
-                        <td>64006</td>
-                        <td>64007</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div id="corpo-relatorios" class="card">
+            <div id="header-relatorio" class="card-header">
+                <h1 class="card-title">Filtrar</h1>
+            </div>
+            <div id="body-relatorio" class="card-body">
+                <form method="POST" >
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="inputRelDateDE">Data - de:</label>
+                            <input type="date" class="form-control" id="inputRelDateDE">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRelDateATE">até:</label>
+                            <input type="date" class="form-control" id="inputRelDateATE">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-1.5">
+                            <label for="inputRelHoraDE">Hora - de:</label>
+                            <input type="time" class="form-control" id="inputRelHoraDE">
+                        </div>
+                        <div class="form-group col-md-1.5">
+                            <label for="inputRelHoraATE">até:</label>
+                            <input type="time" class="form-control" id="inputRelHoraATE">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="inputRelRua">Rua</label>
+                            <input type="text" class="form-control" id="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRelBairro">Bairro</label>
+                            <input type="text" class="form-control" id="inputRelBairro" placeholder="JARDIM EROISE">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="inputRelAtendente">Atendente</label>
+                            <input type="text" class="form-control" id="inputRelAtendente" placeholder="CB FAVERI">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputRelTipoOcorrencia">Tipo de Ocorrência</label>
+                            <input type="text" class="form-control" id="inputRelTipoOcorrencia"
+                                placeholder="CARRO X MOTO">
+                        </div>
+                        <div class="form-group col-md-1.5">
+                            <label for="inputRelCod">Cód Ocorrência</label>
+                            <input type="text" class="form-control" id="inputRelCod" placeholder="L08">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRelVtr">Viatura</label>
+                            <input type="text" class="form-control" id="inputRelVtr" placeholder="UR16215">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-1">
+                            <label for="inputRelNumVitimas">Nº Vit.</label>
+                            <input type="number" class="form-control" id="inputRelNumVitimas">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRelMotorista">Motorista</label>
+                            <input type="text" class="form-control" id="inputRelMotorista">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRelComandante">Comandante</label>
+                            <input type="text" class="form-control" id="inputRelComandante">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="footer-relatorio" class="card-footer">
+                <button type="submit" class="btn btn-primary float-right">Gerar Relatório</button>
+            </div>
         </div>
-
-
     </div>
+
+    <!-- FIM PRINCIPAL -->
+
 
     <!-- RODAPE -->
 
@@ -149,8 +201,6 @@
     </footer>
 
     <!-- FIM RODAPE -->
-
-
 
     <!-- Modal -->
 
@@ -312,6 +362,7 @@
     </script>
 
     <!-- Fim JavaScritp -->
+
 
 </body>
 

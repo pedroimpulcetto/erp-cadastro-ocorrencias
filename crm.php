@@ -1,3 +1,15 @@
+<?php 
+
+    require "config.php";
+
+    $consulta = $pdo->prepare("
+        select * from crm
+        order by inputNomeMedico
+    ");
+    $consulta->execute();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,30 +28,56 @@
     <!-- CABECALHO -->
 
     <div id="cabecalho" class="text-center">
-        <div class="container">
-            <img id="logo" class="header-inline" src="_imagens/policia.png" alt="">
-            <h1 class="text-danger header-inline">Cadastro de Ocorrências</h1>
-        </div>
+        <img id="logo" class="header-inline" src="_imagens/policia.png" alt="">
+        <h1 class="text-danger header-inline">Cadastro de Ocorrências</h1>
     </div>
 
 
     <!-- FIM CABECALHO -->
 
+    <!-- SideBar -->
+
+    <aside id="sidebar" class="clear text-center">
+        <div id="header-sidebar">
+            <h1 class="card-title">CRM</h1>
+        </div>
+        <div id="body-sidebar" class="text-center card-body">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                    data-target="#modalCRM">Adicionar<br><img src="_imagens/add.png" alt="">
+                </button>
+                <br>
+                <button type="button" class="btn btn-outline-secondary">Excluir<br><img src="_imagens/delete.png"
+                        alt=""></button>
+                <br>
+                <button type="button" class="btn btn-outline-success">Editar <br><img src="_imagens/edit.png"
+                        alt=""></button>
+                <br>
+                <button type="button" class="btn btn-outline-danger">Imprimir<br><img src="_imagens/print.png"
+                        alt=""></button>
+                <br>
+                <button type="button" class="btn btn-outline-warning">Salvar<br><img src="_imagens/save.png"></button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Fim SideBar -->
 
     <!-- PRINCIPAL -->
-    <div id="principal-index" class="container">
+    <div id="principal">
+
         <div class="container">
             <div class="text-center">
                 <br>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <button type="button" class="btn btn-outline-dark">Principal
                                 <br>
                                 <img src="_imagens/principal.png">
                             </button>
                         </a>
-                    <li class="nav-item btn-group" data-toggle="buttons">
+                    <li class="nav-item" data-toggle="buttons">
                         <a class="nav-link" href="#">
                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                 data-target=".talao-modal">Talão
@@ -49,7 +87,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="relatorio.html">
+                        <a class="nav-link" href="relatorio.php">
                             <button type="button" class="btn btn-outline-secondary">Relatório
                                 <br>
                                 <img src="_imagens/search.png">
@@ -58,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crm.html">
+                        <a class="nav-link active" href="crm.php">
                             <button type="button" class="btn btn-outline-success">CRM
                                 <br>
                                 <img src="_imagens/medical.png" alt="">
@@ -66,7 +104,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="efetivo.html">
+                        <a class="nav-link" href="efetivo.php">
                             <button type="button" class="btn btn-outline-danger">Efetivo
                                 <br>
                                 <img src="_imagens/efetivo.png" alt="">
@@ -74,7 +112,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viatura.html">
+                        <a class="nav-link" href="viatura.php">
                             <button type="button" class="btn btn-outline-info">Viaturas
                                 <br>
                                 <img src="_imagens/viatura.png" alt="">
@@ -84,63 +122,44 @@
                 </ul>
             </div>
         </div>
+        <div id="corpo-crm" class="card">
+            <div id="header-crm" class="card-header">
+                <h1 class="card-title">CRM's</h1>
+            </div>
+            <div id="body-crm" class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">CRM</th>
+                            <th scope="col">Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $numerador = 1;
+                            while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                                # code...                      
+                                echo "
+                                    <tr>
+                                        <th scope='row'>$numerador</td>
+                                        <td>$row[inputCRM]</td>
+                                        <td>$row[inputNomeMedico]</td>
+                                    </tr>
+                                ";
+                                $numerador = $numerador + 1;
+                            }
 
-        <div id="corpo-index" class="body container card">
-            <br>
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Talão</th>
-                        <th scope="col">Endereço</th>
-                        <th scope="col">Tipo de Ocor.</th>
-                        <th scope="col">Viatura</th>
-                        <th scope="col">Odo. Saída</th>
-                        <th scope="col">Odo. Local</th>
-                        <th scope="col">Odo. Final</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <th></th>
-                        <td>3242</td>
-                        <td>Rua José Lopes Silva, 340 Jd Lemense</td>
-                        <td>Carro X Moto</td>
-                        <td>UR16213</td>
-                        <td>64000</td>
-                        <td>64001</td>
-                        <td>64002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <th></th>
-                        <td>4322</td>
-                        <td>Av. Paul Harris, 1330 Jd do Bosque</td>
-                        <td>Incêndio em Residencia</td>
-                        <td>AB16201</td>
-                        <td>22000</td>
-                        <td>22001</td>
-                        <td>22002</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <th></th>
-                        <td>1234</td>
-                        <td>Av. 29 de Agosto 432 Centro</td>
-                        <td>Mal Súbito</td>
-                        <td>UR16213</td>
-                        <td>64005</td>
-                        <td>64006</td>
-                        <td>64007</td>
-                    </tr>
-                </tbody>
-            </table>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div id="footer-crm" class="card-footer">
+
+            </div>
         </div>
-
-
     </div>
+
 
     <!-- RODAPE -->
 
@@ -149,8 +168,6 @@
     </footer>
 
     <!-- FIM RODAPE -->
-
-
 
     <!-- Modal -->
 
@@ -299,6 +316,45 @@
         </div>
     </div>
 
+
+    <!-- MODAL CRM -->
+
+    <div class="modal fade" id="modalCRM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Adicionar Médico</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="inputNomeMedico">Nome</label>
+                                <input type="text" class="form-control" name="inputNomeMedico" id="inputNomeMedico"
+                                    placeholder="DR. ALLAN">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCRM">CRM</label>
+                                <input type="number" class="form-control" name="inputCRM" id="inputCRM"
+                                    placeholder="138547">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIM MODAL CRM -->
+
     <!-- Fim Modal -->
 
     <!-- JavaScritp -->
@@ -312,6 +368,7 @@
     </script>
 
     <!-- Fim JavaScritp -->
+
 
 </body>
 
