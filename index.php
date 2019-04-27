@@ -3,8 +3,8 @@
     require "config.php";
 
     $consulta = $pdo->prepare("
-        select * from talao
-        order by id_talao
+        SELECT * FROM talao
+        ORDER BY id_talao
     ");
     $consulta->execute();
 
@@ -111,13 +111,14 @@
                         <th scope="col">Odo. Saída</th>
                         <th scope="col">Odo. Local</th>
                         <th scope="col">Odo. Final</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
 
                         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                            # code...
                             echo "
                                 <tr>
                                     <th scope='row'>$row[id_talao]</th>
@@ -125,10 +126,17 @@
                                     <td>$row[inputNumTalao]</td>
                                     <td>$row[inputEndereco], $row[inputNum] - $row[inputBairro]</td>
                                     <td>$row[inputTipoOcorrencia]</td>
-                                    <td>$row[inputPrefixo]</td>
+                                    <td>$row[inputVtr]</td>
                                     <td>$row[inputOS]</td>
                                     <td>$row[inputOL]</td>
                                     <td>$row[inputOPB]</td>
+                                    <td>
+                                        <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
+                                            <button type='button' class='btn btn-secondary btn-success'>View</button>    
+                                            <button type='button' class='btn btn-secondary btn-warning'>Edit</button>
+                                            <a href=\"excluir-talao.php?id_talao=$row[id_talao]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                        </div>
+                                    </td>
                                 </tr>
                             ";
                         }
@@ -165,7 +173,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="salvar-talao.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>

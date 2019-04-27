@@ -196,7 +196,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="salvar-talao.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>
@@ -342,7 +342,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="salvar-efetivo.php" method="post">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-2">

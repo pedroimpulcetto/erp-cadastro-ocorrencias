@@ -119,75 +119,75 @@
                 <h1 class="card-title">Filtrar</h1>
             </div>
             <div id="body-relatorio" class="card-body">
-                <form method="POST" >
+                <form method="post" action="consulta-relatorio.php" >
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="inputRelDateDE">Data - de:</label>
-                            <input type="date" class="form-control" id="inputRelDateDE">
+                            <input type="date" class="form-control" name="inputRelDateDE">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelDateATE">até:</label>
-                            <input type="date" class="form-control" id="inputRelDateATE">
+                            <input type="date" class="form-control" name="inputRelDateATE">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-1.5">
                             <label for="inputRelHoraDE">Hora - de:</label>
-                            <input type="time" class="form-control" id="inputRelHoraDE">
+                            <input type="time" class="form-control" name="inputRelHoraDE">
                         </div>
                         <div class="form-group col-md-1.5">
                             <label for="inputRelHoraATE">até:</label>
-                            <input type="time" class="form-control" id="inputRelHoraATE">
+                            <input type="time" class="form-control" name="inputRelHoraATE">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputRelRua">Rua</label>
-                            <input type="text" class="form-control" id="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
+                            <input type="text" class="form-control" name="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelBairro">Bairro</label>
-                            <input type="text" class="form-control" id="inputRelBairro" placeholder="JARDIM EROISE">
+                            <input type="text" class="form-control" name="inputRelBairro" placeholder="JARDIM EROISE">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="inputRelAtendente">Atendente</label>
-                            <input type="text" class="form-control" id="inputRelAtendente" placeholder="CB FAVERI">
+                            <input type="text" class="form-control" name="inputRelAtendente" placeholder="CB FAVERI">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputRelTipoOcorrencia">Tipo de Ocorrência</label>
-                            <input type="text" class="form-control" id="inputRelTipoOcorrencia"
+                            <input type="text" class="form-control" name="inputRelTipoOcorrencia"
                                 placeholder="CARRO X MOTO">
                         </div>
                         <div class="form-group col-md-1.5">
                             <label for="inputRelCod">Cód Ocorrência</label>
-                            <input type="text" class="form-control" id="inputRelCod" placeholder="L08">
+                            <input type="text" class="form-control" name="inputRelCod" placeholder="L08">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelVtr">Viatura</label>
-                            <input type="text" class="form-control" id="inputRelVtr" placeholder="UR16215">
+                            <input type="text" class="form-control" name="inputRelVtr" placeholder="UR16215">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-1">
                             <label for="inputRelNumVitimas">Nº Vit.</label>
-                            <input type="number" class="form-control" id="inputRelNumVitimas">
+                            <input type="number" class="form-control" name="inputRelNumVitimas">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelMotorista">Motorista</label>
-                            <input type="text" class="form-control" id="inputRelMotorista">
+                            <input type="text" class="form-control" name="inputRelMotorista">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelComandante">Comandante</label>
-                            <input type="text" class="form-control" id="inputRelComandante">
+                            <input type="text" class="form-control" name="inputRelComandante">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div id="footer-relatorio" class="card-footer">
-                <button type="submit" class="btn btn-primary float-right">Gerar Relatório</button>
-            </div>
+                </div>
+                <div id="footer-relatorio" class="card-footer">
+                    <button type="submit" class="btn btn-primary float-right">Gerar Relatório</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -217,7 +217,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="salvar-talao.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>

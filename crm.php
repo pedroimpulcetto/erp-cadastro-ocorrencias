@@ -133,6 +133,7 @@
                             <th scope="col">#</th>
                             <th scope="col">CRM</th>
                             <th scope="col">Nome</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -145,6 +146,13 @@
                                         <th scope='row'>$numerador</td>
                                         <td>$row[inputCRM]</td>
                                         <td>$row[inputNomeMedico]</td>
+                                        <td>
+                                            <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
+                                                <button type='button' class='btn btn-secondary btn-success'>View</button>
+                                                <button type='button' class='btn btn-secondary btn-warning'>Edit</button>
+                                                <a href=\"excluir-crm.php?inputCRM=$row[inputCRM]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 ";
                                 $numerador = $numerador + 1;
@@ -184,7 +192,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="salvar-talao.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>
@@ -329,7 +337,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="salvar-crm.php" method="post">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-8">

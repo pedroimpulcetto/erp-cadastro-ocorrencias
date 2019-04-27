@@ -134,6 +134,7 @@
                             <th scope="col">Prefixo</th>
                             <th scope="col">Marca/Modelo</th>
                             <th scope="col">Placa</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,6 +148,13 @@
                                         <td>$row[inputPrefixo]</td>
                                         <td>$row[inputMM]</td>
                                         <td>$row[inputPlaca]</td>
+                                        <td>
+                                            <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
+                                                <button type='button' class='btn btn-secondary btn-success'>View</button>
+                                                <button type='button' class='btn btn-secondary btn-warning'>Edit</button>
+                                                <a href=\"excluir-viatura.php?inputPrefixo=$row[inputPrefixo]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     
                                 ";
@@ -187,7 +195,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="salvar-talao.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>
@@ -332,7 +340,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="">
+                <form action="salvar-vtr.php" method="post">
                     <div class="modal-body">
                         <div class="form-row">
                            <div class="form-group col-md-3">
