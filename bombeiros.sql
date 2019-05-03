@@ -31,12 +31,14 @@ CREATE TABLE talao(
 );
 
 CREATE TABLE crm(
-    inputCRM int PRIMARY KEY,
+    id_crm int PRIMARY KEY AUTO_INCREMENT,
+    inputCRM int,
     inputNomeMedico VARCHAR (50)
 );
 
 CREATE TABLE efetivo(
-    inputRE int PRIMARY KEY,
+    id_efetivo int PRIMARY KEY AUTO_INCREMENT,
+    inputRE int,
     inputPostGrad VARCHAR (10),
     inputNomeCompleto VARCHAR (50),
     inputDataAdmissao date,
@@ -48,7 +50,8 @@ CREATE TABLE efetivo(
 );
 
 CREATE TABLE viatura(
-    inputPrefixo VARCHAR(10) PRIMARY KEY,
+    id_viatura int PRIMARY KEY AUTO_INCREMENT,
+    inputPrefixo VARCHAR(10),
     inputMM VARCHAR(30),
     inputPlaca VARCHAR(8)
 );

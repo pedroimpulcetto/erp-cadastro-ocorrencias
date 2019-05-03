@@ -157,6 +157,13 @@
                                     <td>$row[inputCel]</td>
                                     <td>$row[inputDN]</td>
                                     <td>$row[inputEmail]</td>
+                                    <td>
+                                        <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
+                                            <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#exampleModal' data-whateverid='$row[id_efetivo]'  data-whateverpost='$row[inputPostGrad]' data-whateverre='$row[inputRE]' data-whatevernomecompleto='$row[inputNomeCompleto]' data-whateveradmissao='$row[inputDataAdmissao]' data-whateverfone='$row[inputFone]' data-whatevercel='$row[inputCel]' data-whateverdn='$row[inputDN]' data-whateveremail='$row[inputEmail]'>Edit</button>
+                                            <a href=\"excluir-efetivo.php?id_efetivo=$row[id_efetivo]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                        </div>
+                                    </td>
+                                    <td style='visibility: hidden'>$row[id_efetivo]</td>
                                 </tr>
                                 
                             ";
@@ -344,6 +351,7 @@
                 </div>
                 <form action="salvar-efetivo.php" method="post">
                     <div class="modal-body">
+                        <input type="hidden"  class="form-control" name="id_efetivo" id="id_efetivo">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputPostGrad">Post/Grad</label>
@@ -392,6 +400,68 @@
 
     <!-- FIM MODAL EFETIVO -->
 
+    <!-- MODAL edit EFETIVO -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Adicionar Militar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="salvar-alterar-efetivo.php" method="post">
+                    <div class="modal-body">
+                        <input type="hidden"  class="form-control" name="inputEditId" id="inputEditId">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="inputPostGrad">Post/Grad</label>
+                                <input type="text" class="form-control" name="inputPostGrad" id="inputEditPostGrad">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputRE">RE</label>
+                                <input type="number" class="form-control" name="inputRE" id="inputEditRE">
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="inputNomeCompleto">Nome Completo</label>
+                                <input type="text" class="form-control" name="inputNomeCompleto" id="inputEditNomeCompleto">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputDataAdmissao">Data Admissão</label>
+                                <input type="date" class="form-control" name="inputDataAdmissao" id="inputEditDataAdmissao">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputFone">Telefone</label>
+                                <input type="tel" class="form-control" name="inputFone" id="inputEditFone">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputCel">Celular</label>
+                                <input type="tel" class="form-control" name="inputCel" id="inputEditCel">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputDN">Data de Nascimento</label>
+                                <input type="date" class="form-control" name="inputDN" id="inputEditDN">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="inputEmil">Email</label>
+                                <input type="email" class="form-control" name="inputEmail" id="inputEditEmail">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIM MODAL edit EFETIVO -->
+
     <!-- Fim Modal -->
 
 
@@ -405,6 +475,33 @@
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
+        })
+    </script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Botão que acionou o modal
+            var id = button.data('whateverid')
+            var post = button.data('whateverpost')
+            var re = button.data('whateverre')
+            var nomeCompleto = button.data('whatevernomecompleto')
+            var admissao = button.data('whateveradmissao')
+            var fone = button.data('whateverfone')
+            var cel = button.data('whatevercel')
+            var dn = button.data('whateverdn')
+            var email = button.data('whateveremail') // Extrai informação dos atributos data-*
+            // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+            // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+            var modal = $(this)
+            modal.find('.modal-title').text('Editar Militar')
+            modal.find('#inputEditId').val(id)
+            modal.find('#inputEditPostGrad').val(post)
+            modal.find('#inputEditRE').val(re)
+            modal.find('#inputEditNomeCompleto').val(nomeCompleto)
+            modal.find('#inputEditDataAdmissao').val(admissao)
+            modal.find('#inputEditFone').val(fone)
+            modal.find('#inputEditCel').val(cel)
+            modal.find('#inputEditDN').val(dn)
+            modal.find('#inputEditEmail').val(email)
         })
     </script>
 

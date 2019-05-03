@@ -4,16 +4,16 @@
 
     // excluir CRM
 
-    $crm = $_GET['inputCRM'];
+    $id_crm = $_GET['id_crm'];
 
-    $consulta = $pdo->prepare("SELECT * FROM crm WHERE inputCRM = :inputCRM");
-    $consulta->bindValue(':inputCRM', $crm);
+    $consulta = $pdo->prepare("SELECT * FROM crm WHERE id_crm = :id_crm");
+    $consulta->bindValue(':id_crm', $id_crm);
     $consulta->execute();
 
     $row = $consulta->fetch(PDO::FETCH_ASSOC);
 
-    $ex = $pdo->prepare("DELETE FROM crm where inputCRM = :inputCRM");
-    $ex->bindValue(':inputCRM', $crm);
+    $ex = $pdo->prepare("DELETE FROM crm where id_crm = :id_crm");
+    $ex->bindValue(':id_crm', $id_crm);
 
     if ($ex->execute()) {
         echo "<h1>CRM Excluído! Aguarde...</h1>";

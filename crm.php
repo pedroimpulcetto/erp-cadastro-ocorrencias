@@ -149,10 +149,11 @@
                                         <td>
                                             <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
                                                 <button type='button' class='btn btn-secondary btn-success'>View</button>
-                                                <button type='button' class='btn btn-secondary btn-warning'>Edit</button>
-                                                <a href=\"excluir-crm.php?inputCRM=$row[inputCRM]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                                <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#exampleModal'  data-whateverid='$row[id_crm]' data-whatever='$row[inputNomeMedico]' data-whatevercrm='$row[inputCRM]'>Edit</button>
+                                                <a href=\"excluir-crm.php?id_crm=$row[id_crm]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
                                             </div>
                                         </td>
+                                        <td style='visibility: hidden'>$row[id_crm]</td>
                                     </tr>
                                 ";
                                 $numerador = $numerador + 1;
@@ -339,6 +340,7 @@
                 </div>
                 <form action="salvar-crm.php" method="post">
                     <div class="modal-body">
+                    <input type="hidden"  class="form-control" name="id_crm" id="id_crm">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="inputNomeMedico">Nome</label>
@@ -363,6 +365,42 @@
 
     <!-- FIM MODAL CRM -->
 
+    <!-- MODAL edit CRM -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Alterar Médico</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="salvar-alterar-crm.php" method="post">
+                    <div class="modal-body">
+                    <input type="hidden"  class="form-control" name="inputEditId" id="inputEditId">
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="inputNomeMedico">Nome</label>
+                                <input type="text" class="form-control" name="inputNomeMedico" id="inputEditNomeMedico">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCRM">CRM</label>
+                                <input type="number" class="form-control" name="inputCRM" id="inputEditCRM">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FIM MODAL edit CRM -->
+
     <!-- Fim Modal -->
 
     <!-- JavaScritp -->
@@ -372,6 +410,21 @@
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
+        })
+    </script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Botão que acionou o modal
+            var id_crm = button.data('whateverid')
+            var nome = button.data('whatever')
+            var crm = button.data('whatevercrm') // Extrai informação dos atributos data-*
+            // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+            // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+            var modal = $(this)
+            modal.find('.modal-title').text('Editar Médico')
+            modal.find('#inputEditId').val(id_crm)
+            modal.find('#inputEditNomeMedico').val(nome)
+            modal.find('#inputEditCRM').val(crm)
         })
     </script>
 

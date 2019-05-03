@@ -5,15 +5,19 @@
     // SALVAR EFETIVO
 
     $postGrad = $_POST['inputPostGrad'];
-    $re = $_POST['inputRE'];
+    $re = $_POST['inputEditRE'];
     $nomeCompleto = $_POST['inputNomeCompleto'];
     $dataAdmissao = $_POST['inputDataAdmissao'];
     $fone = $_POST['inputFone'];
     $cel = $_POST['inputCel'];
     $dn = $_POST['inputDN'];
     $email = $_POST['inputEmail'];
+
+    // alterando para letra MAIUSCULA
+    $nomeCompleto = strtoupper($nomeCompleto);
+    $postGrad = strtoupper($postGrad);
     
-    $inserir = $pdo->prepare('insert into efetivo(inputPostGrad, inputRE, inputNomeCompleto, inputDataAdmissao, inputFone, inputCel, inputDN, inputEmail) values (:inputPostGrad, :inputRE, :inputNomeCompleto, :inputDataAdmissao, :inputFone, :inputCel, :inputDN, :inputEmail)');
+    $inserir = $pdo->prepare('INSERT INTO efetivo(inputPostGrad, inputRE, inputNomeCompleto, inputDataAdmissao, inputFone, inputCel, inputDN, inputEmail) VALUES (:inputPostGrad, :inputRE, :inputNomeCompleto, :inputDataAdmissao, :inputFone, :inputCel, :inputDN, :inputEmail)');
 
     $inserir->bindValue(':inputPostGrad', $postGrad);
     $inserir->bindValue(':inputRE', $re);
