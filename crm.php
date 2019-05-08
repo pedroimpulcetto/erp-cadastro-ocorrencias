@@ -412,7 +412,8 @@
             $('#myInput').trigger('focus')
         })
     </script>
-    <script>
+
+    <script>    
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Botão que acionou o modal
             var id_crm = button.data('whateverid')

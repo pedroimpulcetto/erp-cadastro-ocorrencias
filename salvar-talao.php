@@ -4,6 +4,7 @@
 
     // SALVAR TALAO
 
+    $id_talao = $_POST['id_talao'];
     $numTalao = $_POST['inputNumTalao'];
     $data = $_POST['inputData'];
     $horaChamada = $_POST['inputHoraChamada'];
@@ -30,10 +31,17 @@
     $motorista = $_POST['inputMotorista'];
     $comandante = $_POST['inputComandante'];
 
+    // alterando para letra MAIUSCULA
+    $solicitante = strtoupper($solicitante);
+    $endereco = strtoupper($endereco);
+    $bairro = strtoupper($bairro);
+    $atendente = strtoupper($atendente);
+    $motorista = strtoupper($motorista);
+    $comandante = strtoupper($comandante);
     
-    $inserir = $pdo->prepare('insert into talao(id_talao, inputNumTalao, inputData, inputHoraChamada, inputSolicitante, inputTel, inputEndereco, inputNum, inputBairro, inputAtendente, inputTipoOcorrencia, inputCod, inputVtr, inputHS, inputOS, inputHL, inputOL, inputSL, inputPS, inputSPS, inputHPB, inputOPB, inputNumVitimas, inputQruOcor, inputMotorista, inputComandante) values (:id_talao, :inputNumTalao, :inputData, :inputHoraChamada, :inputSolicitante, :inputTel, :inputEndereco, :inputNum, :inputBairro, :inputAtendente, :inputTipoOcorrencia, :inputCod, :inputVtr, :inputHS, :inputOS, :inputHL, :inputOL, :inputSL, :inputPS, :inputSPS, :inputHPB, :inputOPB, :inputNumVitimas, :inputQruOcor, :inputMotorista, :inputComandante)');
+    $inserir = $pdo->prepare('INSERT INTO talao(id_talao, inputNumTalao, inputData, inputHoraChamada, inputSolicitante, inputTel, inputEndereco, inputNum, inputBairro, inputAtendente, inputTipoOcorrencia, inputCod, inputVtr, inputHS, inputOS, inputHL, inputOL, inputSL, inputPS, inputSPS, inputHPB, inputOPB, inputNumVitimas, inputQruOcor, inputMotorista, inputComandante) VALUES (:id_talao, :inputNumTalao, :inputData, :inputHoraChamada, :inputSolicitante, :inputTel, :inputEndereco, :inputNum, :inputBairro, :inputAtendente, :inputTipoOcorrencia, :inputCod, :inputVtr, :inputHS, :inputOS, :inputHL, :inputOL, :inputSL, :inputPS, :inputSPS, :inputHPB, :inputOPB, :inputNumVitimas, :inputQruOcor, :inputMotorista, :inputComandante)');
 
-    $inserir->bindValue(':id_talao', 0);
+    $inserir->bindValue(':id_talao', $id_talao);
     $inserir->bindValue(':inputNumTalao', $numTalao);
     $inserir->bindValue(':inputData', $data);
     $inserir->bindValue(':inputHoraChamada', $horaChamada);

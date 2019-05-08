@@ -19,12 +19,11 @@
     $alteracao->bindValue(':inputNomeMedico', $nomeMedico);
     $alteracao->bindValue(':inputCRM', $crm);
 
-    exit;
     if ($alteracao->execute()) {
         echo "<h1>CRM Alterado!</h1>";
         header("Refresh: 0; URL=crm.php");
     }else {
-            echo "<h1>ERRO ao alterar o time.</h1>";
+            echo "<h1>ERRO ao alterar o CRM.</h1>";
     }
 
 ?>
