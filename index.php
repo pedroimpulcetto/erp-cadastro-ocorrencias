@@ -132,8 +132,8 @@
                                     <td>$row[inputOPB]</td>
                                     <td>
                                         <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                            <button type='button' class='btn btn-secondary btn-success'>View</button>    
-                                            <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#editTalao' data-whateverid='$row[id_talao]'
+                                            <button type='button' class='btn btn-outline-success'>View</button>    
+                                            <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#editTalao' data-whateverid='$row[id_talao]'
                                             data-whatevernumtalao='$row[inputNumTalao]' data-whateverdatahora='$row[inputData]'
                                             data-whateverhorachamada='$row[inputHoraChamada]' data-whateversolicitante='$row[inputSolicitante]' data-whatevertel='$row[inputTel]'
                                             data-whateverendereco='$row[inputEndereco]'
@@ -157,7 +157,7 @@
                                             data-whatevermotorista='$row[inputMotorista]'
                                             data-whatevercomandante='$row[inputComandante]'
                                             >Edit</button>
-                                            <a href=\"excluir-talao.php?id_talao=$row[id_talao]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                            <button type='button' class='btn btn-outline-danger'><a href=\"excluir-talao.php?id_talao=$row[id_talao]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\">Del</a></button>
                                         </div>
                                     </td>
                                     <td style='visibility: hidden'>$row[id_talao]</td>
