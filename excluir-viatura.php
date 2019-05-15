@@ -16,10 +16,13 @@
     $ex->bindValue(':inputPrefixo', $viatura);
 
     if ($ex->execute()) {
-        echo "<h1>Viatura Excluída! Aguarde...</h1>";
-            header("Refresh: 0; URL=viatura.php");
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Viatura Apagada com Sucesso!</div>";
+        header("Location: viatura.php");
     }else{
-        echo "<h1>Erro ao excluir!</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível apagar.</div>";
+        header("Location: viatura.php");
     }
     
 

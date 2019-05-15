@@ -20,10 +20,13 @@
     $alteracao->bindValue(':inputCRM', $crm);
 
     if ($alteracao->execute()) {
-        echo "<h1>CRM Alterado!</h1>";
-        header("Refresh: 0; URL=crm.php");
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>CRM Alterado com Sucesso!</div>";
+        header("Location: crm.php");
     }else {
-            echo "<h1>ERRO ao alterar o CRM.</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível alterar.</div>";
+        header("Location: crm.php");        
     }
 
 ?>

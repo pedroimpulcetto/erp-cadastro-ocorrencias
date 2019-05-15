@@ -16,10 +16,13 @@
     $ex->bindValue(':id_efetivo', $id_efetivo);
 
     if ($ex->execute()) {
-        echo "<h1>Militar Excluído! Aguarde...</h1>";
-            header("Refresh: 0; URL=efetivo.php");
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Militar Apagado com Sucesso!</div>";
+        header("Location: efetivo.php");
     }else{
-        echo "<h1>Erro ao excluir!</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível apagar.</div>";
+        header("Location: efetivo.php");
     }
     
 

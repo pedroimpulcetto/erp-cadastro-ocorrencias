@@ -69,10 +69,13 @@
     $inserir->bindValue(':inputComandante', $comandante);
 
     if ($inserir->execute()) {
-        echo "<h1>Talão Cadastrado!</h1>";
-        header('Refresh: 0; URL=index.php');     
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Talão Salvo com Sucesso!</div>";
+        header("Location: index.php");     
     } else {
-        echo "<h1>Erro ao cadastrar.</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível salvar.</div>";
+        header("Location: index.php");
     }
 
 

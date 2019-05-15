@@ -71,10 +71,13 @@
     $alteracao->bindValue(':inputComandante', $comandante);
 
     if ($alteracao->execute()) {
-        echo "<h1>Talão Alterado!</h1>";
-        header("Refresh: 0; URL=index.php");
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Talão Alterado com Sucesso!</div>";
+        header("Location: index.php");
     }else {
-            echo "<h1>ERRO ao alterar o talão.</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível alterar.</div>";
+        header("Location: index.php");        
     }
 
 ?>

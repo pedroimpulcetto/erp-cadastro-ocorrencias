@@ -16,10 +16,13 @@
     $inserir->bindValue(':inputPlaca', $placa);
 
     if ($inserir->execute()) {
-        echo "<h1>Viatura Cadastrada!</h1>";
-        header('Refresh: 0; URL=viatura.php');     
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Viatura Salva com Sucesso!</div>";
+        header("Location: viatura.php");     
     } else {
-        echo "<h1>Erro ao cadastrar.</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível salvar.</div>";
+        header("Location: viatura.php");
     }
 
 

@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
     require "config.php";
 
     $consulta = $pdo->prepare("
@@ -115,6 +115,13 @@
                         <th></th>
                     </tr>
                 </thead>
+                <?php
+                    if(isset($_SESSION['msg']))
+                    {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                ?>
                 <tbody>
                     <?php
                         $numerador = 1;

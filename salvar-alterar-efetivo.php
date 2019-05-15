@@ -33,10 +33,13 @@
     $alteracao->bindValue(':inputEmail', $email);
     
     if ($alteracao->execute()) {
-        echo "<h1>Militar Alterado!</h1>";
-        header("Refresh: 0; URL=efetivo.php");
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>Militar Alterado com Sucesso!</div>";
+        header("Location: efetivo.php");
     }else {
-            echo "<h1>ERRO ao alterar o militar.</h1>";
+        session_start();
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível alterar.</div>";
+        header("Location: efetivo.php");        
     }
 
 ?>

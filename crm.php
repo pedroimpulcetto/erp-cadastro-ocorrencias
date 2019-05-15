@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
     require "config.php";
 
     $consulta = $pdo->prepare("
@@ -122,6 +122,7 @@
                 </ul>
             </div>
         </div>
+
         <div id="corpo-crm" class="card">
             <div id="header-crm" class="card-header">
                 <h1 class="card-title">CRM's</h1>
@@ -136,6 +137,13 @@
                             <th></th>
                         </tr>
                     </thead>
+                    <?php
+                        if(isset($_SESSION['msg']))
+                        {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
                     <tbody>
                         <?php 
                             $numerador = 1;
@@ -145,7 +153,7 @@
                                     <tr>
                                         <th scope='row'>$numerador</td>
                                         <td>$row[inputCRM]</td>
-                                        <td>$row[inputNomeMedico]</td>
+                                        <td>Dr(a). $row[inputNomeMedico]</td>
                                         <td>
                                             <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
                                                 <button type='button' class='btn btn-secondary btn-success'>View</button>
@@ -391,8 +399,13 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <div class="float-left">
+                            <button type="button" class="btn btn-danger">Danger</button>
+                        </div>
+                        <div class="float-none">
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -427,6 +440,9 @@
             modal.find('#inputEditNomeMedico').val(nome)
             modal.find('#inputEditCRM').val(crm)
         })
+    </script>
+    <script>
+        $('.alert').alert()
     </script>
 
     <!-- Fim JavaScritp -->
