@@ -362,7 +362,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputPostGrad">Post/Grad</label>
-                                <input type="text" class="form-control" name="inputPostGrad" id="inputPostGrad">
+                                <select class="form-control" name="inputPostGrad" id="inputPostGrad">
+                                    <option value="Cap">Cap</option>
+                                    <option value="1º Ten">1º Ten</option>
+                                    <option value="2º Ten">2º Ten</option>
+                                    <option value="SubTen">SubTen</option>
+                                    <option value="1º Sgt">1º Sgt</option>
+                                    <option value="2º Sgt">2º Sgt</option>
+                                    <option value="3º Sgt">3º Sgt</option>
+                                    <option value="Cb">Cb</option>
+                                    <option value="Sd">Sd</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputRE">RE</label>
@@ -424,7 +434,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputPostGrad">Post/Grad</label>
-                                <input type="text" class="form-control" name="inputPostGrad" id="inputEditPostGrad">
+                                <select class="form-control" name="inputPostGrad" id="inputPostGrad">
+                                    <option value="Cap">Cap</option>
+                                    <option value="1º Ten">1º Ten</option>
+                                    <option value="2º Ten">2º Ten</option>
+                                    <option value="SubTen">SubTen</option>
+                                    <option value="1º Sgt">1º Sgt</option>
+                                    <option value="2º Sgt">2º Sgt</option>
+                                    <option value="3º Sgt">3º Sgt</option>
+                                    <option value="Cb">Cb</option>
+                                    <option value="Sd">Sd</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputRE">RE</label>
@@ -510,6 +530,11 @@
             modal.find('#inputEditDN').val(dn)
             modal.find('#inputEditEmail').val(email)
         })
+    </script>
+    <script>   
+        setTimeout(function(){ 
+            $('#msg-clear').remove();   
+        }, 5000);
     </script>
 
     <!-- Fim JavaScritp -->

@@ -19,11 +19,15 @@
 
     if ($inserir->execute()) {
         session_start();
-        $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>CRM Salvo com Sucesso!</div>";
+        $_SESSION['msg'] = "<div id='msg-clear' class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>CRM Salvo com Sucesso!</div>";
         header("Location: crm.php");     
     } else {
         session_start();
-        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>ERRO! Não foi possível salvar.</div>";
+        $_SESSION['msg'] = "<div id='msg-clear' class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>ERRO! Não foi possível salvar.</div>";
         header("Location: crm.php");
     }
 

@@ -441,8 +441,10 @@
             modal.find('#inputEditCRM').val(crm)
         })
     </script>
-    <script>
-        $('.alert').alert()
+    <script>   
+        setTimeout(function(){ 
+            $('#msg-clear').remove();   
+        }, 5000);
     </script>
 
     <!-- Fim JavaScritp -->

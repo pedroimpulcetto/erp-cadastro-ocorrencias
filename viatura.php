@@ -386,6 +386,11 @@
             $('#myInput').trigger('focus')
         })
     </script>
+    <script>   
+        setTimeout(function(){ 
+            $('#msg-clear').remove();   
+        }, 5000);
+    </script>
 
     <!-- Fim JavaScritp -->
 
