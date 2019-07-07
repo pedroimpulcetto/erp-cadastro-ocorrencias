@@ -157,8 +157,7 @@
                                         <td>$row[inputPlaca]</td>
                                         <td>
                                             <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                                <button type='button' class='btn btn-secondary btn-success'>View</button>
-                                                <button type='button' class='btn btn-secondary btn-warning'>Edit</button>
+                                                <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#modalEditVtr'  data-whateverprefixo='$row[inputPrefixo]' data-whatevermm='$row[inputMM]' data-whateverplaca='$row[inputPlaca]'>Edit</button>
                                                 <a href=\"excluir-viatura.php?inputPrefixo=$row[inputPrefixo]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
                                             </div>
                                         </td>
@@ -375,6 +374,46 @@
 
     <!-- FIM MODAL VIATURA -->
 
+    <!-- MODAL EDIT VIATURA -->
+
+    <div class="modal fade" id="modalEditVtr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Adicionar Viatura</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="salvar-alterar-vtr.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-row">
+                           <div class="form-group col-md-3">
+                                <label for="inputPrefixo">Prefixo</label>
+                                <input type="text" class="form-control" name="inputPrefixo" id="inputEditPrefixo">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputMM">Marca/Modelo</label>
+                                <input type="text" class="form-control" name="inputMM" id="inputEditMM">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPlaca">Placa</label>
+                                <input type="text" class="form-control" name="inputPlaca" id="inputEditPlaca">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIM MODAL EDIT VIATURA -->
+
     <!-- Fim Modal -->
 
     <!-- JavaScritp -->
@@ -384,6 +423,22 @@
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
+        })
+    </script>
+
+    <script>    
+        $('#modalEditVtr').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Botão que acionou o modal
+            var prefixo = button.data('whateverprefixo')
+            var MM = button.data('whatevermm')
+            var placa = button.data('whateverplaca') // Extrai informação dos atributos data-*
+            // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+            // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+            var modal = $(this)
+            modal.find('.modal-title').text('Editar Viatura')
+            modal.find('#inputEditPrefixo').val(prefixo)
+            modal.find('#inputEditMM').val(MM)
+            modal.find('#inputEditPlaca').val(placa)
         })
     </script>
     <script>   

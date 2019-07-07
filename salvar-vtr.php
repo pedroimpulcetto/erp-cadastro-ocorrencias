@@ -8,8 +8,8 @@
     $MM = $_POST['inputMM'];
     $placa = $_POST['inputPlaca'];
 
-    $inserir = $pdo->prepare('insert into viatura(inputPrefixo, inputMM, inputPlaca)
-        values (:inputPrefixo, :inputMM, :inputPlaca)');
+    $inserir = $pdo->prepare('INSERT INTO viatura(inputPrefixo, inputMM, inputPlaca)
+        VALUES (:inputPrefixo, :inputMM, :inputPlaca)');
 
     $inserir->bindValue(':inputPrefixo', $prefixo);
     $inserir->bindValue(':inputMM', $MM);
