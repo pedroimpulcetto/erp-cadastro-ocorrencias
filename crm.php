@@ -149,7 +149,10 @@
                         <?php 
                             $numerador = 1;
                             while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                                # code...                      
+                                # code...   
+                                $id = $row['id_crm'];   
+                                $nome = $row['inputNomeMedico'];     
+                                $crm = $row['inputCRM'];    
                                 echo "
                                     <tr>
                                         <th scope='row'>$numerador</td>
@@ -157,13 +160,39 @@
                                         <td>Dr(a). $row[inputNomeMedico]</td>
                                         <td>
                                             <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                                <button type='button' class='btn btn-secondary btn-success'>View</button>
-                                                <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#exampleModal'  data-whateverid='$row[id_crm]' data-whatever='$row[inputNomeMedico]' data-whatevercrm='$row[inputCRM]'>Edit</button>
-                                                <a href=\"excluir-crm.php?id_crm=$row[id_crm]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                                <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#exampleModal'  data-whateverid='$row[id_crm]' data-whatever='$row[inputNomeMedico]' data-whatevercrm='$row[inputCRM]'>Edit</button>
+                                                <button type='button' class='btn btn-outline-danger' data-toggle='modal'
+                                                data-target='#modal$id'>Del</a></button>
                                             </div>
                                         </td>
                                         <td style='visibility: hidden'>$row[id_crm]</td>
                                     </tr>
+
+
+                                    <!-- MODAL APAGAR -->
+
+                                    <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
+                                        <div class='modal-dialog' role='document'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                                                        <span aria-hidden='true'>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <h5>Deseja realmente apagar esse registro?</h5>
+                                                </div>
+                                                <div class='modal-footer'>
+                                                <a href=\"excluir-crm.php?id_crm=$row[id_crm]\"><button type='reset' class='btn btn-outline-danger'>Apagar</button></a>
+                                                    <button type='' class='btn btn-primary' data-dismiss='modal'>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FIM MODAL APAGAR -->
+
                                 ";
                                 $numerador = $numerador + 1;
                             }
@@ -400,9 +429,6 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="float-left">
-                            <button type="button" class="btn btn-danger">Danger</button>
-                        </div>
                         <div class="float-none">
                             <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -414,6 +440,8 @@
     </div>
     
     <!-- FIM MODAL edit CRM -->
+
+    
 
     <!-- Fim Modal -->
 

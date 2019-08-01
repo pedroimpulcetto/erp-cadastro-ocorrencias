@@ -126,6 +126,7 @@
                     <?php
                         $numerador = 1;
                         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                            $id = $row['id_talao'];
                             echo "
                                 <tr>
                                     <th scope='row'>$numerador</th>
@@ -138,8 +139,7 @@
                                     <td>$row[inputOL]</td>
                                     <td>$row[inputOPB]</td>
                                     <td>
-                                        <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                            <button type='button' class='btn btn-outline-success'>View</button>    
+                                        <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>   
                                             <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#editTalao' data-whateverid='$row[id_talao]'
                                             data-whatevernumtalao='$row[inputNumTalao]' data-whateverdatahora='$row[inputData]'
                                             data-whateverhorachamada='$row[inputHoraChamada]' data-whateversolicitante='$row[inputSolicitante]' data-whatevertel='$row[inputTel]'
@@ -164,11 +164,36 @@
                                             data-whatevermotorista='$row[inputMotorista]'
                                             data-whatevercomandante='$row[inputComandante]'
                                             >Edit</button>
-                                            <button type='button' class='btn btn-outline-danger'><a href=\"excluir-talao.php?id_talao=$row[id_talao]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\">Del</a></button>
+                                            <button type='button' class='btn btn-outline-danger' data-toggle='modal'
+                                            data-target='#modal$id'>Del</button>
                                         </div>
                                     </td>
                                     <td style='visibility: hidden'>$row[id_talao]</td>
                                 </tr>
+
+                                <!-- MODAL APAGAR -->
+
+                                    <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
+                                        <div class='modal-dialog' role='document'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                                                        <span aria-hidden='true'>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <h5>Deseja realmente apagar esse registro?</h5>
+                                                </div>
+                                                <div class='modal-footer'>
+                                                <a href=\"excluir-talao.php?id_talao=$row[id_talao]\"><button type='reset' class='btn btn-outline-danger'>Apagar</button></a>
+                                                    <button type='' class='btn btn-primary' data-dismiss='modal'>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FIM MODAL APAGAR -->
                             ";
                             $numerador = $numerador + 1;
                         }

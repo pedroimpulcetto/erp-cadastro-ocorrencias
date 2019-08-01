@@ -152,7 +152,8 @@
                     <?php 
                         $numerador = 1;
                         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                            # code...                               
+                            # code...                 
+                            $id = $row['id_efetivo'];              
                             echo "
                                 <tr>
                                     <th scope='row'>$numerador</th>
@@ -166,12 +167,35 @@
                                     <td>$row[inputEmail]</td>
                                     <td>
                                         <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                            <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#exampleModal' data-whateverid='$row[id_efetivo]'  data-whateverpost='$row[inputPostGrad]' data-whateverre='$row[inputRE]' data-whatevernomecompleto='$row[inputNomeCompleto]' data-whateveradmissao='$row[inputDataAdmissao]' data-whateverfone='$row[inputFone]' data-whatevercel='$row[inputCel]' data-whateverdn='$row[inputDN]' data-whateveremail='$row[inputEmail]'>Edit</button>
-                                            <a href=\"excluir-efetivo.php?id_efetivo=$row[id_efetivo]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                        <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#exampleModal' data-whateverid='$row[id_efetivo]'  data-whateverpost='$row[inputPostGrad]' data-whateverre='$row[inputRE]' data-whatevernomecompleto='$row[inputNomeCompleto]' data-whateveradmissao='$row[inputDataAdmissao]' data-whateverfone='$row[inputFone]' data-whatevercel='$row[inputCel]' data-whateverdn='$row[inputDN]' data-whateveremail='$row[inputEmail]'>Edit</button>
+                                            <button type='button' class='btn btn-outline-danger' data-toggle='modal'
+                                            data-target='#modal$id'>Del</button>
                                         </div>
                                     </td>
                                     <td style='visibility: hidden'>$row[id_efetivo]</td>
                                 </tr>
+
+                                <!-- MODAL APAGAR -->
+
+                                    <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
+                                        <div class='modal-dialog' role='document'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                                                        <span aria-hidden='true'>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <h5>Deseja realmente apagar esse registro?</h5>
+                                                </div>
+                                                <div class='modal-footer'>
+                                                <a href=\"excluir-efetivo.php?id_efetivo=$row[id_efetivo]\"><button type='reset' class='btn btn-outline-danger'>Apagar</button></a>
+                                                    <button type='' class='btn btn-primary' data-dismiss='modal'>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 
                             ";
                             $numerador = $numerador + 1;

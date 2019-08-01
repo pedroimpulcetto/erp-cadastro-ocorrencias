@@ -148,7 +148,8 @@
                         <?php 
                             $numerador = 1;
                             while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                                # code...                               
+                                # code...         
+                                $id = $row['id_viatura'];                      
                                 echo "
                                     <tr>
                                         <th scope='row'>$numerador</td>
@@ -157,11 +158,37 @@
                                         <td>$row[inputPlaca]</td>
                                         <td>
                                             <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                                <button type='button' class='btn btn-secondary btn-warning' data-toggle='modal' data-target='#modalEditVtr'  data-whateverprefixo='$row[inputPrefixo]' data-whatevermm='$row[inputMM]' data-whateverplaca='$row[inputPlaca]'>Edit</button>
-                                                <a href=\"excluir-viatura.php?inputPrefixo=$row[inputPrefixo]\"  onclick=\"return confirm('Confirmar a exclusão do registro?')\"><button type='button' class='btn btn-secondary btn-danger'>Del</button></a>
+                                                <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#modalEditVtr'  data-whateverprefixo='$row[inputPrefixo]' data-whatevermm='$row[inputMM]' data-whateverplaca='$row[inputPlaca]'>Edit</button>
+                                                <button type='button' class='btn btn-outline-danger' data-toggle='modal'
+                                                data-target='#modal$id'>Del</button>
                                             </div>
                                         </td>
+                                        <td style='visibility: hidden'>$row[id_viatura]</td>
                                     </tr>
+
+                                    <!-- MODAL APAGAR -->
+
+                                    <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
+                                        <div class='modal-dialog' role='document'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                                                        <span aria-hidden='true'>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <h5>Deseja realmente apagar esse registro?</h5>
+                                                </div>
+                                                <div class='modal-footer'>
+                                                <a href=\"excluir-viatura.php?id_viatura=$row[id_viatura]\"><button type='reset' class='btn btn-outline-danger'>Apagar</button></a>
+                                                    <button type='' class='btn btn-primary' data-dismiss='modal'>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FIM MODAL APAGAR -->
                                     
                                 ";
                                 $numerador = $numerador + 1;

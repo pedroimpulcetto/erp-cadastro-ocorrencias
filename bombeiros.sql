@@ -14,7 +14,7 @@ CREATE TABLE talao(
     inputAtendente VARCHAR(20), /*atendente*/
     inputTipoOcorrencia VARCHAR(20),
     inputCod VARCHAR(5),
-    inputVtr VARCHAR(10),
+    inputVtr VARCHAR(10), /*viatura*/
     inputHS time,
     inputOS int,
     inputHL time,

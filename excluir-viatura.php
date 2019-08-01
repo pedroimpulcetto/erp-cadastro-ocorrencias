@@ -4,16 +4,16 @@
 
     // excluir VIATURA
 
-    $viatura = $_GET['inputPrefixo'];
+    $viatura = $_GET['id_viatura'];
 
-    $consulta = $pdo->prepare("SELECT * FROM viatura WHERE inputPrefixo = :inputPrefixo");
-    $consulta->bindValue(':inputPrefixo', $viatura);
+    $consulta = $pdo->prepare("SELECT * FROM viatura WHERE id_viatura = :id_viatura");
+    $consulta->bindValue(':id_viatura', $viatura);
     $consulta->execute();
 
     $row = $consulta->fetch(PDO::FETCH_ASSOC);
 
-    $ex = $pdo->prepare("DELETE FROM viatura where inputPrefixo = :inputPrefixo");
-    $ex->bindValue(':inputPrefixo', $viatura);
+    $ex = $pdo->prepare("DELETE FROM viatura where id_viatura = :id_viatura");
+    $ex->bindValue(':id_viatura', $viatura);
 
     if ($ex->execute()) {
         session_start();
