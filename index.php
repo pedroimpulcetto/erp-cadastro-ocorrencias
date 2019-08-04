@@ -127,10 +127,12 @@
                         $numerador = 1;
                         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
                             $id = $row['id_talao'];
+                            $date = $row['inputData'];
+
                             echo "
                                 <tr>
                                     <th scope='row'>$numerador</th>
-                                    <td>$row[inputData]</td>
+                                    <td>$date</td>
                                     <td>$row[inputNumTalao]</td>
                                     <td>$row[inputEndereco], $row[inputNum] - $row[inputBairro]</td>
                                     <td>$row[inputTipoOcorrencia]</td>
