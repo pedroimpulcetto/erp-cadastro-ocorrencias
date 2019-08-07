@@ -7,6 +7,7 @@
     $postGrad = $_POST['inputPostGrad'];
     $re = $_POST['inputEditRE'];
     $nomeCompleto = $_POST['inputNomeCompleto'];
+    $nomeGuerra = $_POST['inputNomeGuerra'];
     $dataAdmissao = $_POST['inputDataAdmissao'];
     $fone = $_POST['inputFone'];
     $cel = $_POST['inputCel'];
@@ -17,11 +18,12 @@
     $nomeCompleto = strtoupper($nomeCompleto);
     $postGrad = strtoupper($postGrad);
     
-    $inserir = $pdo->prepare('INSERT INTO efetivo(inputPostGrad, inputRE, inputNomeCompleto, inputDataAdmissao, inputFone, inputCel, inputDN, inputEmail) VALUES (:inputPostGrad, :inputRE, :inputNomeCompleto, :inputDataAdmissao, :inputFone, :inputCel, :inputDN, :inputEmail)');
+    $inserir = $pdo->prepare('INSERT INTO efetivo(inputPostGrad, inputRE, inputNomeCompleto, inputDataAdmissao, inputFone, inputCel, inputDN, inputEmail, inputNomeGuerra) VALUES (:inputPostGrad, :inputRE, :inputNomeCompleto, :inputDataAdmissao, :inputFone, :inputCel, :inputDN, :inputEmail, :inputNomeGuerra)');
 
     $inserir->bindValue(':inputPostGrad', $postGrad);
     $inserir->bindValue(':inputRE', $re);
     $inserir->bindValue(':inputNomeCompleto', $nomeCompleto);
+    $inserir->bindValue(':inputNomeGuerra', $nomeGuerra);
     $inserir->bindValue(':inputDataAdmissao', $dataAdmissao);
     $inserir->bindValue(':inputFone', $fone);
     $inserir->bindValue(':inputCel', $cel);

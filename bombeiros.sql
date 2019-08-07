@@ -41,6 +41,7 @@ CREATE TABLE efetivo(
     inputRE int,
     inputPostGrad VARCHAR (10),
     inputNomeCompleto VARCHAR (50),
+    inputNomeGuerra VARCHAR(30),
     inputDataAdmissao date,
     inputFone int,
     inputCel int,

@@ -8,6 +8,7 @@
     $postGrad = $_POST['inputPostGrad'];
     $re = $_POST['inputRE'];
     $nomeCompleto = $_POST['inputNomeCompleto'];
+    $nomeGuerra = $_POST['inputNomeGuerra'];
     $dataAdmissao = $_POST['inputDataAdmissao'];
     $fone = $_POST['inputFone'];
     $cel = $_POST['inputCel'];
@@ -18,7 +19,7 @@
     $nomeCompleto = strtoupper($nomeCompleto);
     $postGrad = strtoupper($postGrad);
 
-    $sql = "UPDATE efetivo SET inputPostGrad = :inputPostGrad, inputRE = :inputRE, inputNomeCompleto = :inputNomeCompleto, inputDataAdmissao = :inputDataAdmissao, inputFone = :inputFone, inputCel = :inputCel, inputDN = :inputDN, inputEmail = :inputEmail WHERE id_efetivo = :id_efetivo";
+    $sql = "UPDATE efetivo SET inputPostGrad = :inputPostGrad, inputRE = :inputRE, inputNomeCompleto = :inputNomeCompleto, inputNomeGuerra = :inputNomeGuerra, inputDataAdmissao = :inputDataAdmissao, inputFone = :inputFone, inputCel = :inputCel, inputDN = :inputDN, inputEmail = :inputEmail WHERE id_efetivo = :id_efetivo";
 
     $alteracao = $pdo->prepare($sql);
     
@@ -26,6 +27,7 @@
     $alteracao->bindValue(':inputPostGrad', $postGrad);
     $alteracao->bindValue(':inputRE', $re);
     $alteracao->bindValue(':inputNomeCompleto', $nomeCompleto);
+    $alteracao->bindValue(':inputNomeGuerra', $nomeGuerra);
     $alteracao->bindValue(':inputDataAdmissao', $dataAdmissao);
     $alteracao->bindValue(':inputFone', $fone);
     $alteracao->bindValue(':inputCel', $cel);

@@ -131,16 +131,6 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-1.5">
-                            <label for="inputRelHoraDE">Hora - de:</label>
-                            <input type="time" class="form-control" name="inputRelHoraDE">
-                        </div>
-                        <div class="form-group col-md-1.5">
-                            <label for="inputRelHoraATE">até:</label>
-                            <input type="time" class="form-control" name="inputRelHoraATE">
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputRelRua">Rua</label>
                             <input type="text" class="form-control" name="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
@@ -160,20 +150,12 @@
                             <input type="text" class="form-control" name="inputRelTipoOcorrencia"
                                 placeholder="CARRO X MOTO">
                         </div>
-                        <div class="form-group col-md-1.5">
-                            <label for="inputRelCod">Cód Ocorrência</label>
-                            <input type="text" class="form-control" name="inputRelCod" placeholder="L08">
-                        </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelVtr">Viatura</label>
                             <input type="text" class="form-control" name="inputRelVtr" placeholder="UR16215">
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-1">
-                            <label for="inputRelNumVitimas">Nº Vit.</label>
-                            <input type="number" class="form-control" name="inputRelNumVitimas">
-                        </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelMotorista">Motorista</label>
                             <input type="text" class="form-control" name="inputRelMotorista">

@@ -3,7 +3,7 @@
     require "config.php";
 
     $consulta = $pdo->prepare("
-        select * from efetivo
+        select *, DATE_FORMAT(inputDataAdmissao,'%d/%m/%Y') as dataAdmissao, DATE_FORMAT(inputDN,'%d/%m/%Y') as DN  from efetivo
         order by inputPostGrad
     ");
     $consulta->execute();
@@ -127,7 +127,7 @@
                 <h1 class="card-title">Efetivo</h1>
             </div>
             <div id="body-efetivo" class="card-body">
-            <table class="table table-hover table-bordered"> 
+            <table class="table table-hover"> 
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -160,14 +160,15 @@
                                     <td>$row[inputPostGrad]</td>
                                     <td>$row[inputRE]</td>
                                     <td>$row[inputNomeCompleto]</td>
-                                    <td>$row[inputDataAdmissao]</td>
+                                    <td>$row[dataAdmissao]</td>
                                     <td>$row[inputFone]</td>
                                     <td>$row[inputCel]</td>
-                                    <td>$row[inputDN]</td>
+                                    <td>$row[DN]</td>
                                     <td>$row[inputEmail]</td>
                                     <td>
                                         <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>
-                                        <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#exampleModal' data-whateverid='$row[id_efetivo]'  data-whateverpost='$row[inputPostGrad]' data-whateverre='$row[inputRE]' data-whatevernomecompleto='$row[inputNomeCompleto]' data-whateveradmissao='$row[inputDataAdmissao]' data-whateverfone='$row[inputFone]' data-whatevercel='$row[inputCel]' data-whateverdn='$row[inputDN]' data-whateveremail='$row[inputEmail]'>Edit</button>
+                                        <button type='button' class='btn btn-outline-warning' data-toggle='modal' data-target='#exampleModal' data-whateverid='$row[id_efetivo]'  data-whateverpost='$row[inputPostGrad]' data-whateverre='$row[inputRE]' data-whatevernomecompleto='$row[inputNomeCompleto]'
+                                        data-whatevernomeguerra='$row[inputNomeGuerra]'  data-whateveradmissao='$row[inputDataAdmissao]' data-whateverfone='$row[inputFone]' data-whatevercel='$row[inputCel]' data-whateverdn='$row[inputDN]' data-whateveremail='$row[inputEmail]'>Edit</button>
                                             <button type='button' class='btn btn-outline-danger' data-toggle='modal'
                                             data-target='#modal$id'>Del</button>
                                         </div>
@@ -407,6 +408,10 @@
                                 <input type="text" class="form-control" name="inputNomeCompleto" id="inputNomeCompleto">
                             </div>
                             <div class="form-group col-md-2">
+                                <label for="inputNomeGuerra">Nome de Guerra</label>
+                                <input type="text" class="form-control" name="inputNomeGuerra" id="inputNomeGuerra">
+                            </div>
+                            <div class="form-group col-md-2">
                                 <label for="inputDataAdmissao">Data Admissão</label>
                                 <input type="date" class="form-control" name="inputDataAdmissao" id="inputDataAdmissao">
                             </div>
@@ -479,6 +484,10 @@
                                 <input type="text" class="form-control" name="inputNomeCompleto" id="inputEditNomeCompleto">
                             </div>
                             <div class="form-group col-md-2">
+                                <label for="inputNomeGuerra">Nome de Guerra</label>
+                                <input type="text" class="form-control" name="inputNomeGuerra" id="inputEditNomeGuerra">
+                            </div>
+                            <div class="form-group col-md-2">
                                 <label for="inputDataAdmissao">Data Admissão</label>
                                 <input type="date" class="form-control" name="inputDataAdmissao" id="inputEditDataAdmissao">
                             </div>
@@ -535,6 +544,7 @@
             var post = button.data('whateverpost')
             var re = button.data('whateverre')
             var nomeCompleto = button.data('whatevernomecompleto')
+            var nomeGuerra = button.data('whatevernomeguerra')
             var admissao = button.data('whateveradmissao')
             var fone = button.data('whateverfone')
             var cel = button.data('whatevercel')
@@ -548,6 +558,7 @@
             modal.find('#inputEditPostGrad').val(post)
             modal.find('#inputEditRE').val(re)
             modal.find('#inputEditNomeCompleto').val(nomeCompleto)
+            modal.find('#inputEditNomeGuerra').val(nomeGuerra)
             modal.find('#inputEditDataAdmissao').val(admissao)
             modal.find('#inputEditFone').val(fone)
             modal.find('#inputEditCel').val(cel)

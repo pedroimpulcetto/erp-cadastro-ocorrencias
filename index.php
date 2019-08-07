@@ -2,16 +2,24 @@
     session_start();
     require "config.php";
 
+    // consulta talao
     $consulta = $pdo->prepare("
-        SELECT * FROM talao
+        SELECT talao.*, DATE_FORMAT(talao.inputData,'%d/%m/%Y') as data
+        FROM talao
         ORDER BY id_talao
     ");
     $consulta->execute();
 
+    // consulta viatura
+    $consultaVtr = $pdo->prepare("
+        SELECT * FROM viatura
+        ORDER BY inputPrefixo
+    ");
+    $consultaVtr->execute();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -127,7 +135,7 @@
                         $numerador = 1;
                         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
                             $id = $row['id_talao'];
-                            $date = $row['inputData'];
+                            $date = $row['data'];
 
                             echo "
                                 <tr>
@@ -280,9 +288,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="inputCity">Atendente</label>
-                                <input type="text" class="form-control" name="inputAtendente" id="inputAtendente"
-                                    placeholder="CB FAVERI">
+                            <label for="inputAtendente">Atendente</label>
+                            <select class="form-control" name="inputAtendente" id="inputAtendente">
+                                <?php
+                                    while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
+                                        echo "<option value=''>$rowEfetivo[inputNomeGuerra]</option>";
+                                    }
+                                ?>
+                                </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
@@ -295,8 +308,13 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputVtr">Viatura</label>
-                                <input type="text" class="form-control" name="inputVtr" id="inputVtr"
-                                    placeholder="UR16215">
+                                <select class="form-control" name="inputVtr" id="inputVtr">
+                                    <?php
+                                    while ($row = $consultaVtr -> fetch(PDO::FETCH_ASSOC)){
+                                        echo "<option value='$row[inputPrefixo]'>$row[inputPrefixo]</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-row">
@@ -418,8 +436,8 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="inputCity">Atendente</label>
-                                <input type="text" class="form-control" name="inputAtendente" id="inputAtendente">
+                            <label for="inputAtendente">Atendente</label>
+                            <input class="form-control" name="inputAtendente" id="inputAtendente">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
@@ -432,7 +450,7 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputVtr">Viatura</label>
-                                <input type="text" class="form-control" name="inputVtr" id="inputVtr">
+                                <input class="form-control" name="inputVtr" id="inputVtr">
                             </div>
                         </div>
                         <div class="form-row">

@@ -4,28 +4,25 @@ require "config.php";
 
 $rDateDE = $_POST['inputRelDateDE'];
 $rDateATE = $_POST['inputRelDateATE'];
-$rHoraDE = $_POST['inputRelHoraDE'];
-$rHoraATE = $_POST['inputRelHoraATE'];
 $rRua = $_POST['inputRelRua'];
 $rBairro = $_POST['inputRelBairro'];
 $rAtendente = $_POST['inputRelAtendente'];
 $rTipoOcorrencia = $_POST['inputRelTipoOcorrencia'];
-$rCod = $_POST['inputRelCod'];
 $rVtr = $_POST['inputRelVtr'];
-$rNumVitimas = $_POST['inputRelNumVitimas'];
 $rMotorista = $_POST['inputRelMotorista'];
 $rComandante = $_POST['inputRelComandante'];
 
 // IF - filtrando por data ou não
 
 if ($rDateDE == '' && $rDateATE == '') {
-    $consulta = $pdo-> prepare("SELECT * FROM talao 
+    $consulta = $pdo-> prepare("SELECT *, DATE_FORMAT(inputData,'%d/%m/%Y') FROM talao 
     WHERE inputEndereco LIKE :rRua 
     AND inputTipoOcorrencia LIKE :rTipoOcorrencia 
     AND inputAtendente LIKE :rAtendente
     AND inputVtr LIKE :rVtr");
+    
 } else {
-    $consulta = $pdo-> prepare("SELECT * FROM talao 
+    $consulta = $pdo-> prepare("SELECT *, DATE_FORMAT(inputData,'%d/%m/%Y') FROM talao 
     WHERE inputEndereco LIKE :rRua 
     AND inputTipoOcorrencia LIKE :rTipoOcorrencia 
     AND inputAtendente LIKE :rAtendente 
@@ -91,17 +88,27 @@ $consulta -> execute();
         <div id="corpo-relatorio" class="card">
             <div id="header-relatorio" class="card-header">
                 <div class="container">
-                    <h6>Filtrado por:</h6>
-                    Data - de: <?php echo$rDateDE?> até: <?php echo$rDateATE?><br>
-                    Rua: <?php echo$rRua?><br>
+                    <h5>Filtrado por:</h5>
+                    Data - de: <strong><?php if ($rDateDE == '') {
+                        echo "";
+                    } else {
+                        echo date('d/m/Y', strtotime($rDateDE));
+                    }
+                     ?></strong> até: <strong><?php if ($rDateATE == '') {
+                        echo "";
+                     } else {
+                        echo date('d/m/Y', strtotime($rDateATE));
+                     }
+                      ?></strong><br>
+                    Rua: <strong><?php echo$rRua?></strong><br>
                 </div> 
                 <div class="container">
-                    Bairro: <?php echo$rBairro?><br>
-                    Atendente: <?php echo$rAtendente?><br>
+                    Bairro: <strong><?php echo$rBairro?></strong><br>
+                    Atendente: <strong><?php echo$rAtendente?></strong><br>
                 </div>
                 <div class="container">
-                    Tipo de Ocorrência: <?php echo$rTipoOcorrencia?><br>
-                    Viatura: <?php echo$rVtr?><br>    
+                    Tipo de Ocorrência: <strong><?php echo$rTipoOcorrencia?></strong><br>
+                    Viatura: <strong><?php echo$rVtr?></strong><br>    
                 </div>         
             </div>
             <div id="body-relatorio" class="card-body">
@@ -125,9 +132,10 @@ $consulta -> execute();
 while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
 
     $id = $row['id_talao'];
+    $data = date('d/m/Y', strtotime($row['inputData']));
     echo "<tr>
             <th>$numerador</th>
-            <td>$row[inputData]</td>
+            <td>$data</td>
             <td>$row[inputEndereco]</td>
             <td>$row[inputAtendente]</td>
             <td>$row[inputTipoOcorrencia]</td>
@@ -204,7 +212,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputData">Data</label>
-                                <input type="date" class="form-control" name="inputData" id="inputData">
+                                <input type="date" class="form-control" name="inputData" id="inputData" readonly>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputHoraChamada">Hora Chamada</label>
