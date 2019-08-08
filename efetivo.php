@@ -8,10 +8,17 @@
     ");
     $consulta->execute();
 
+    // consulta postgrad
+    $consultaPostGrad = $pdo->prepare("
+        SELECT * FROM postgrad
+        ORDER BY id_postgrad
+    ");
+    $consultaPostGrad->execute();
+
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -139,6 +146,7 @@
                         <th scope="col">Celular</th>
                         <th scope="col">Data de Nascimento</th>
                         <th scope="col">E-mail</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <?php
@@ -181,8 +189,8 @@
                                     <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
                                         <div class='modal-dialog' role='document'>
                                             <div class='modal-content'>
-                                                <div class='modal-header'>
-                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                <div class='modal-header bg-danger'>
+                                                    <h5 class='modal-title text-white' id='modalApagar'>Alerta!</h5>
                                                     <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
                                                         <span aria-hidden='true'>&times;</span>
                                                     </button>
@@ -388,15 +396,12 @@
                             <div class="form-group col-md-2">
                                 <label for="inputPostGrad">Post/Grad</label>
                                 <select class="form-control" name="inputPostGrad" id="inputPostGrad">
-                                    <option value="Cap">Cap</option>
-                                    <option value="1º Ten">1º Ten</option>
-                                    <option value="2º Ten">2º Ten</option>
-                                    <option value="SubTen">SubTen</option>
-                                    <option value="1º Sgt">1º Sgt</option>
-                                    <option value="2º Sgt">2º Sgt</option>
-                                    <option value="3º Sgt">3º Sgt</option>
-                                    <option value="Cb">Cb</option>
-                                    <option value="Sd">Sd</option>
+                                <option value=""></option>
+                                    <?php
+                                    while ($row = $consultaPostGrad -> fetch(PDO::FETCH_ASSOC)){
+                                        echo "<option value='$row[postgrad]'>$row[postgrad]</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
@@ -463,17 +468,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputPostGrad">Post/Grad</label>
-                                <select class="form-control" name="inputPostGrad" id="inputPostGrad">
-                                    <option value="Cap">Cap</option>
-                                    <option value="1º Ten">1º Ten</option>
-                                    <option value="2º Ten">2º Ten</option>
-                                    <option value="SubTen">SubTen</option>
-                                    <option value="1º Sgt">1º Sgt</option>
-                                    <option value="2º Sgt">2º Sgt</option>
-                                    <option value="3º Sgt">3º Sgt</option>
-                                    <option value="Cb">Cb</option>
-                                    <option value="Sd">Sd</option>
-                                </select>
+                                <input type="text" class="form-control" name="inputPostGrad" id="inputEditPostGrad">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputRE">RE</label>

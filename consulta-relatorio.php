@@ -12,6 +12,15 @@ $rVtr = $_POST['inputRelVtr'];
 $rMotorista = $_POST['inputRelMotorista'];
 $rComandante = $_POST['inputRelComandante'];
 
+// LETRA MAIUSCULA
+$rRua = strtoupper($rRua);
+$rBairro = strtoupper($rBairro);
+$rAtendente= strtoupper($rAtendente);
+$rTipoOcorrencia = strtoupper($rTipoOcorrencia);
+$rVtr = strtoupper($rVtr);
+$rMotorista = strtoupper($rMotorista);
+$rComandante= strtoupper($rComandante);
+
 // IF - filtrando por data ou não
 
 if ($rDateDE == '' && $rDateATE == '') {
@@ -142,7 +151,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
             <td>$row[inputVtr]</td>
             <td>
                 <div class='btn-group btn-group-sm' role='group' aria-label='botoes'>   
-                    <button type='button' class='btn btn-outline-success' data-toggle='modal' data-target='#viewTalao' data-whateverid='$row[id_talao]'
+                    <button type='button' class='btn btn-outline-success fechar' data-toggle='modal' data-target='#viewTalao' data-whateverid='$row[id_talao]'
                     data-whatevernumtalao='$row[inputNumTalao]' data-whateverdatahora='$row[inputData]'
                     data-whateverhorachamada='$row[inputHoraChamada]' data-whateversolicitante='$row[inputSolicitante]' data-whatevertel='$row[inputTel]'
                     data-whateverendereco='$row[inputEndereco]'
@@ -198,7 +207,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-danger" id="exampleModalLabel">Editar Talão</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close fechar" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -318,7 +327,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
                         </div>
                         <div class="modal-footer">
                             <button name="editar" id="editar" class="btn btn-warning">Editar</button>
-                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="reset" class="btn btn-secondary fechar" data-dismiss="modal">Fechar</button>
                             <button onclick="enviar()" type="submit" class="btn btn-primary">Salvar Talão</button>
                         </div>
                     </form>
@@ -329,144 +338,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
 
     <!-- FIM MODAL edit TALAO -->
 
-    <!-- MODAL edit TALAO -->
-
-    <div class="modal fade" id="viewTalao" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Editar Talão</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="salvar-alterar-talao.php" method="post">
-                        <input type="hidden"  class="form-control" name="id_talao" id="id_talao">
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <label for="inputNumTalao">Nº Talão</label>
-                                <input type="number" class="form-control" name="inputNumTalao" id="inputNumTalao">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputData">Data</label>
-                                <input type="date" class="form-control" name="inputData" id="inputData">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputHoraChamada">Hora Chamada</label>
-                                <input type="time" class="form-control" name="inputHoraChamada" id="inputHoraChamada">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputSolicitante">Solicitante</label>
-                                <input type="text" class="form-control" name="inputSolicitante" id="inputSolicitante">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputTel">Telefone</label>
-                                <input type="tel" class="form-control" name="inputTel" id="inputTel">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-5">
-                                <label for="inputEndereco">Endereço</label>
-                                <input type="text" class="form-control" name="inputEndereco" id="inputEndereco">
-                            </div>
-                            <div class="form-group col-md-1">
-                                <label for="inputNum">Nº</label>
-                                <input type="number" class="form-control" name="inputNum" id="inputNum">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputBairro">Bairro</label>
-                                <input type="text" class="form-control" name="inputBairro" id="inputBairro">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <label for="inputCity">Atendente</label>
-                                <input type="text" class="form-control" name="inputAtendente" id="inputAtendente">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
-                                <input type="text" class="form-control" name="inputTipoOcorrencia"
-                                    id="inputTipoOcorrencia">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputCod">Cód Ocorrência</label>
-                                <input type="text" class="form-control" name="inputCod" id="inputCod">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputVtr">Viatura</label>
-                                <input type="text" class="form-control" name="inputVtr" id="inputVtr">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-1.5">
-                                <label for="inputHS">Hora Saída</label>
-                                <input type="time" class="form-control" name="inputHS" id="inputHS">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputOS">Odo. Saída</label>
-                                <input type="number" class="form-control" name="inputOS" id="inputOS">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputHL">Hora Local</label>
-                                <input type="time" class="form-control" name="inputHL" id="inputHL">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputOL">Odo. Local</label>
-                                <input type="number" class="form-control" name="inputOL" id="inputOL">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputSO">Saída Ocor.</label>
-                                <input type="time" class="form-control" name="inputSL" id="inputSL">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputPS">Chegada PS</label>
-                                <input type="time" class="form-control" name="inputPS" id="inputPS">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputSPS">Saída PS</label>
-                                <input type="time" class="form-control" name="inputSPS" id="inputSPS">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-1.5">
-                                <label for="inputHPB">Hora PB</label>
-                                <input type="time" class="form-control" name="inputHPB" id="inputHPB">
-                            </div>
-                            <div class="form-group col-md-1.5">
-                                <label for="inputOPB">Odo. PB</label>
-                                <input type="number" class="form-control" name="inputOPB" id="inputOPB">
-                            </div>
-                            <div class="form-group col-md-1">
-                                <label for="inputNumVitimas">Nº Vit.</label>
-                                <input type="number" class="form-control" name="inputNumVitimas" id="inputNumVitimas">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputQruOcor">QRU Ocorrência</label>
-                                <input type="text" class="form-control" name="inputQruOcor" id="inputQruOcor">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputMotorista">Motorista</label>
-                                <input type="text" class="form-control" name="inputMotorista" id="inputMotorista">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputComandante">Comandante</label>
-                                <input type="text" class="form-control" name="inputComandante" id="inputComandante">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-warning">Editar</button>
-                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Salvar Talão</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FIM MODAL edit TALAO -->
+    
 
     <!-- JavaScritp -->
 
@@ -543,9 +415,16 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
         })
     </script>
     <script>
+    // botao editar - readonly
         $('#editar').click(function(){
             $('.editar').prop('readonly', false);
         });
+
+    // botao cancelar e botao 'x'
+        $('.fechar').click(function(){
+            $('.editar').prop('readonly', true);
+        });
+
     </script>
     <script>
         function enviar(){

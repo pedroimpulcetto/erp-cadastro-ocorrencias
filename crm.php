@@ -174,8 +174,8 @@
                                     <div class='modal fade' id='modal$id' tabindex='-1' role='dialog' aria-labelledby='modal$id' aria-hidden='true'>
                                         <div class='modal-dialog' role='document'>
                                             <div class='modal-content'>
-                                                <div class='modal-header'>
-                                                    <h5 class='modal-title text-danger' id='modalApagar'>Alerta!</h5>
+                                                <div class='modal-header bg-danger'>
+                                                    <h5 class='modal-title text-white' id='modalApagar'>Alerta!</h5>
                                                     <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
                                                         <span aria-hidden='true'>&times;</span>
                                                     </button>

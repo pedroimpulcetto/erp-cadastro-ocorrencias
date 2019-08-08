@@ -5,7 +5,7 @@
     // SALVAR EFETIVO
 
     $postGrad = $_POST['inputPostGrad'];
-    $re = $_POST['inputEditRE'];
+    $re = $_POST['inputRE'];
     $nomeCompleto = $_POST['inputNomeCompleto'];
     $nomeGuerra = $_POST['inputNomeGuerra'];
     $dataAdmissao = $_POST['inputDataAdmissao'];

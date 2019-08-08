@@ -35,29 +35,9 @@
 
     <!-- FIM CABECALHO -->
 
-    <!-- SideBar -->
-
-    <aside id="sidebar" class="clear text-center">
-        <div id="header-sidebar">
-            <h1 class="card-title">Relatório</h1>
-        </div>
-        <div id="body-sidebar" class="text-center card-body">
-            <div class="btn-group-vertical">
-                <button type="button" class="btn btn-outline-primary">Imprimir<br><img src="_imagens/print.png" alt="">
-                </button>
-                <br>
-                <button type="button" class="btn btn-outline-secondary">Salvar<br><img src="_imagens/save.png"></button>
-                <br>
-                <button type="button" class="btn btn-outline-success">Success</button>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Fim SideBar -->
-
     <!-- PRINCIPAL -->
 
-    <div id="principal">
+    <div id="">
         <div class="container">
             <div class="text-center">
                 <br>

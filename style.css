@@ -10047,15 +10047,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 
-#sidebar{
-  width: 15%;
-  float: left;
-  padding: 10px;
-  border-right: 2px solid red;
-  background-color: rgb(190, 190, 190);
-  height: 100%;
-}
-
 #principal{
   width: 85%;
   float: right;
