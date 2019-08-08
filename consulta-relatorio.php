@@ -203,122 +203,123 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="salvar-alterar-talao.php" method="post">
+                    <form action="salvar-alterar-talao.php" method="post" onsubmit='return false' name="formulario">
                         <input type="hidden"  class="form-control" name="id_talao" id="id_talao">
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputNumTalao">Nº Talão</label>
-                                <input type="number" class="form-control" name="inputNumTalao" id="inputNumTalao" readonly>
+                                <input type="number" class="form-control editar" name="inputNumTalao" id="inputNumTalao" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputData">Data</label>
-                                <input type="date" class="form-control" name="inputData" id="inputData" readonly>
+                                <input type="date" class="form-control editar" name="inputData" id="inputData" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputHoraChamada">Hora Chamada</label>
-                                <input type="time" class="form-control" name="inputHoraChamada" id="inputHoraChamada">
+                                <input type="time" class="form-control editar" name="inputHoraChamada" id="inputHoraChamada" readonly="true">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputSolicitante">Solicitante</label>
-                                <input type="text" class="form-control" name="inputSolicitante" id="inputSolicitante">
+                                <input type="text" class="form-control editar" name="inputSolicitante" id="inputSolicitante" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputTel">Telefone</label>
-                                <input type="tel" class="form-control" name="inputTel" id="inputTel">
+                                <input type="tel" class="form-control editar" name="inputTel" id="inputTel" readonly="true">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="inputEndereco">Endereço</label>
-                                <input type="text" class="form-control" name="inputEndereco" id="inputEndereco">
+                                <input type="text" class="form-control editar" name="inputEndereco" id="inputEndereco" readonly="true">
                             </div>
                             <div class="form-group col-md-1">
                                 <label for="inputNum">Nº</label>
-                                <input type="number" class="form-control" name="inputNum" id="inputNum">
+                                <input type="number" class="form-control editar" name="inputNum" id="inputNum" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputBairro">Bairro</label>
-                                <input type="text" class="form-control" name="inputBairro" id="inputBairro">
+                                <input type="text" class="form-control editar" name="inputBairro" id="inputBairro" readonly="true">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputCity">Atendente</label>
-                                <input type="text" class="form-control" name="inputAtendente" id="inputAtendente">
+                                <input type="text" class="form-control editar" name="inputAtendente" id="inputAtendente" readonly="true">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTipoOcorrencia">Tipo de Ocorrência</label>
-                                <input type="text" class="form-control" name="inputTipoOcorrencia"
-                                    id="inputTipoOcorrencia">
+                                <input type="text" class="form-control editar" name="inputTipoOcorrencia"
+                                    id="inputTipoOcorrencia" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputCod">Cód Ocorrência</label>
-                                <input type="text" class="form-control" name="inputCod" id="inputCod">
+                                <input type="text" class="form-control editar" name="inputCod" id="inputCod" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputVtr">Viatura</label>
-                                <input type="text" class="form-control" name="inputVtr" id="inputVtr">
+                                <input type="text" class="form-control editar" name="inputVtr" id="inputVtr" readonly="true">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-1.5">
                                 <label for="inputHS">Hora Saída</label>
-                                <input type="time" class="form-control" name="inputHS" id="inputHS">
+                                <input type="time" class="form-control editar" name="inputHS" id="inputHS" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputOS">Odo. Saída</label>
-                                <input type="number" class="form-control" name="inputOS" id="inputOS">
+                                <input type="number" class="form-control editar" name="inputOS" id="inputOS" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputHL">Hora Local</label>
-                                <input type="time" class="form-control" name="inputHL" id="inputHL">
+                                <input type="time" class="form-control editar" name="inputHL" id="inputHL" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputOL">Odo. Local</label>
-                                <input type="number" class="form-control" name="inputOL" id="inputOL">
+                                <input type="number" class="form-control editar" name="inputOL" id="inputOL" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputSO">Saída Ocor.</label>
-                                <input type="time" class="form-control" name="inputSL" id="inputSL">
+                                <input type="time" class="form-control editar" name="inputSL" id="inputSL" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputPS">Chegada PS</label>
-                                <input type="time" class="form-control" name="inputPS" id="inputPS">
+                                <input type="time" class="form-control editar" name="inputPS" id="inputPS" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputSPS">Saída PS</label>
-                                <input type="time" class="form-control" name="inputSPS" id="inputSPS">
+                                <input type="time" class="form-control editar" name="inputSPS" id="inputSPS" readonly="true">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-1.5">
                                 <label for="inputHPB">Hora PB</label>
-                                <input type="time" class="form-control" name="inputHPB" id="inputHPB">
+                                <input type="time" class="form-control editar" name="inputHPB" id="inputHPB" readonly="true">
                             </div>
                             <div class="form-group col-md-1.5">
                                 <label for="inputOPB">Odo. PB</label>
-                                <input type="number" class="form-control" name="inputOPB" id="inputOPB">
+                                <input type="number" class="form-control editar" name="inputOPB" id="inputOPB" readonly="true">
                             </div>
                             <div class="form-group col-md-1">
                                 <label for="inputNumVitimas">Nº Vit.</label>
-                                <input type="number" class="form-control" name="inputNumVitimas" id="inputNumVitimas">
+                                <input type="number" class="form-control editar" name="inputNumVitimas" id="inputNumVitimas" readonly="true">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputQruOcor">QRU Ocorrência</label>
-                                <input type="text" class="form-control" name="inputQruOcor" id="inputQruOcor">
+                                <input type="text" class="form-control editar" name="inputQruOcor" id="inputQruOcor" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputMotorista">Motorista</label>
-                                <input type="text" class="form-control" name="inputMotorista" id="inputMotorista">
+                                <input type="text" class="form-control editar" name="inputMotorista" id="inputMotorista" readonly="true">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputComandante">Comandante</label>
-                                <input type="text" class="form-control" name="inputComandante" id="inputComandante">
+                                <input type="text" class="form-control editar" name="inputComandante" id="inputComandante" readonly="true">
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button name="editar" id="editar" class="btn btn-warning">Editar</button>
                             <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Salvar Talão</button>
+                            <button onclick="enviar()" type="submit" class="btn btn-primary">Salvar Talão</button>
                         </div>
                     </form>
                 </div>
@@ -455,6 +456,7 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button class="btn btn-warning">Editar</button>
                             <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             <button type="submit" class="btn btn-primary">Salvar Talão</button>
                         </div>
@@ -539,6 +541,16 @@ while ($row = $consulta -> fetch(PDO::FETCH_ASSOC)){
             
             
         })
+    </script>
+    <script>
+        $('#editar').click(function(){
+            $('.editar').prop('readonly', false);
+        });
+    </script>
+    <script>
+        function enviar(){
+            document.formulario.submit();
+        }
     </script>
 
 

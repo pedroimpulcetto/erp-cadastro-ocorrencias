@@ -133,7 +133,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputRelRua">Rua</label>
-                            <input type="text" class="form-control" name="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
+                            <input type="text" class="form-control editar" name="inputRelRua" placeholder="RUA JOSÉ LOPES SILVA">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputRelBairro">Bairro</label>
