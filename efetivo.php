@@ -42,36 +42,9 @@
 
     <!-- FIM CABECALHO -->
 
-    <!-- SideBar -->
-
-    <aside id="sidebar" class="clear text-center">
-        <div id="header-sidebar">
-            <h1 class="card-title">Efetivo</h1>
-        </div>
-        <div id="body-sidebar" class="text-center card-body">
-            <div class="btn-group-vertical">
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                    data-target="#modalEfetivo">Adicionar<br><img src="_imagens/add.png" alt="">
-                </button>
-                <br>
-                <button type="button" class="btn btn-outline-secondary">Excluir<br><img src="_imagens/delete.png"
-                        alt=""></button>
-                <br>
-                <button type="button" class="btn btn-outline-success">Editar <br><img src="_imagens/edit.png"
-                        alt=""></button>
-                <br>
-                <button type="button" class="btn btn-outline-danger">Imprimir<br><img src="_imagens/print.png"
-                        alt=""></button>
-                <br>
-                <button type="button" class="btn btn-outline-warning">Salvar<br><img src="_imagens/save.png"></button>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Fim SideBar -->
 
     <!-- PRINCIPAL -->
-    <div id="principal">
+    <div id="">
 
         <div class="container">
             <div class="text-center">
@@ -131,7 +104,10 @@
         </div>
         <div id="corpo-efetivo" class="card">
             <div id="header-efetivo" class="card-header">
-                <h1 class="card-title">Efetivo</h1>
+                <span class="card-title h1">Efetivo</span>
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
+                    data-target="#modalEfetivo">Adicionar<br><img src="_imagens/add.png" alt="">
+                </button>
             </div>
             <div id="body-efetivo" class="card-body">
             <table class="table table-hover"> 
